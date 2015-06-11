@@ -1,5 +1,7 @@
 ## 0.1.3
 * Autocomplete snippet for PRE
+* Fix issue 1: keywords in strings are no longer highlighted
+
 ## 0.1.2
 * Intermediate release after renaming the package
 

@@ -13,6 +13,27 @@
     'name': 'comment.block.classicalb'
   }
   {
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.classicalb'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.classicalb'
+    'name': 'string.quoted.double.classicalb'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escape.classicalb'
+      }
+      {
+        'match': '""'
+        'name': 'constant.character.escape.quote.classicalb'
+      }
+    ]
+  }
+  {
     'match': 'INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|IMPLEMENTATION|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
     'name': 'keyword.machineclause.classicalb'
   }

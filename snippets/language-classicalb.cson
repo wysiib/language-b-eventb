@@ -1,0 +1,4 @@
+'.source.classicalb':
+  'While':
+    'prefix': 'while'
+    'body': 'WHILE ${1:p}\nDO\n\t${2:G}\nVARIANT ${3:E}\nINVARIANT ${4:Q}\nEND\n'

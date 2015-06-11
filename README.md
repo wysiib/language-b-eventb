@@ -8,4 +8,4 @@ Code contributions are greatly appreciated. Please fork this repository and open
 pull request to add snippets, make grammar tweaks, etc.
 
 # Build / Test Status
-[![Build Status](https://travis-ci.org/wysiib/language-b-event-b.svg)](https://travis-ci.org/wysiib/language-b-event-b)
+[![Build Status](https://travis-ci.org/wysiib/language-b-eventb.svg)](https://travis-ci.org/wysiib/language-b-eventb)

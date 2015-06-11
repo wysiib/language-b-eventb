@@ -3,7 +3,7 @@ describe 'Classical B grammar', ->
 
   beforeEach ->
     waitsForPromise ->
-      atom.packages.activatePackage('language-b-event-b')
+      atom.packages.activatePackage('language-b-eventb')
 
     runs ->
       grammar = atom.grammars.grammarForScopeName('source.classicalb')

@@ -35,7 +35,7 @@
   }
   {
     'match': 'MACHINE|INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|IMPLEMENTATION|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
-    'name': 'keyword.machineclause.classicalb'
+    'name': 'keyword.other.machineclause.classicalb'
   }
   {
     'match': 'INTER|UNION|SIGMA|PI'
@@ -43,15 +43,15 @@
   }
   {
     'match': ':'
-    'name': 'operator.set.classicalb'
+    'name': 'keyword.operator.set.classicalb'
   }
   {
     'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
-    'name': 'operator.relation.classicalb'
+    'name': 'keyword.operator.relation.classicalb'
   }
   {
     'match': '<--|:=|=(=)?(>)?|::'
-    'name': 'operator.assignment.classicalb'
+    'name': 'keyword.operator.assignment.classicalb'
   }
 # breaks test for some reason
 #  {
@@ -64,16 +64,16 @@
   }
   {
     'match': 'MININT|MAXINT'
-    'name': 'keyword.support.constant.numeric.classicalb'
+    'name': 'constant.language.numeric.classicalb'
   }
   {
     'match': 'TRUE|FALSE'
-    'name': 'keyword.support.constant.boolean.classicalb'
+    'name': 'constant.language.other.classicalb'
   }
   # todo: add IN
   {
     'match': 'skip|LET|BE|VAR|ANY|WHILE|DO|VARIANT|ELSIF|IF|THEN|ELSE|EITHER|CASE|SELECT|ASSERT|WHEN|PRE|BEGIN|END|CHOICE|WHERE|OR|OF'
-    'name': 'keyword.support.control.classicalb'
+    'name': 'keyword.control.classicalb'
   }
   {
     'match': 'not|or'
@@ -81,7 +81,7 @@
   }
   {
     'match': '&'
-    'name': 'operator.logical.classicalb'
+    'name': 'keyword.operator.logical.classicalb'
   }
   {
     'match': 'first|last|tail|front'
@@ -110,7 +110,7 @@
   }
   {
     'match': 'SET_PREF_\w*|FORCE_SYMMETRY_\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*'
-    'name': 'keyword.definition.classicalb'
+    'name': 'keyword.control.definition.classicalb'
   }
 
 # todo: still missing:

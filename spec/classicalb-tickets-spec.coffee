@@ -16,7 +16,7 @@ describe 'Classical B tickets', ->
     it "should not color keywords in strings", ->
       {tokens} = grammar.tokenizeLine 'x = "DOWN"'
       expect(tokens[0]).toEqual value: 'x', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[2]).toEqual value: '=', scopes: [ 'source.classicalb', 'operator.assignment.classicalb' ]
+      expect(tokens[2]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.assignment.classicalb' ]
       expect(tokens[4]).toEqual value: '"', scopes: [ 'source.classicalb', 'string.quoted.double.classicalb', 'punctuation.definition.string.begin.classicalb' ]
       expect(tokens[5]).toEqual value: 'DOWN', scopes: [ 'source.classicalb', 'string.quoted.double.classicalb' ]
       expect(tokens[6]).toEqual value: '"', scopes: [ 'source.classicalb', 'string.quoted.double.classicalb', 'punctuation.definition.string.end.classicalb' ]
@@ -24,8 +24,8 @@ describe 'Classical B tickets', ->
   describe "issue 1", ->
     it "should highlight the machine keyword", ->
       {tokens} = grammar.tokenizeLine 'MACHINE test\nVARIABLES x\nEND\n'
-      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'keyword.machineclause.classicalb' ]
+      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'keyword.other.machineclause.classicalb' ]
       expect(tokens[2]).toEqual value: 'test', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[4]).toEqual value: 'VARIABLES', scopes: [ 'source.classicalb', 'keyword.machineclause.classicalb' ]
+      expect(tokens[4]).toEqual value: 'VARIABLES', scopes: [ 'source.classicalb', 'keyword.other.machineclause.classicalb' ]
       expect(tokens[6]).toEqual value: 'x', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[8]).toEqual value: 'END', scopes: [ 'source.classicalb', 'keyword.support.control.classicalb' ]
+      expect(tokens[8]).toEqual value: 'END', scopes: [ 'source.classicalb', 'keyword.control.classicalb' ]

@@ -1,6 +1,8 @@
 ## 0.1.3
 * Autocomplete snippet for PRE
-* Fix issue 1: keywords in strings are no longer highlighted
+* Follow naming conventions more strictly
+* Fix issue 1: do not highlight keywords in strings
+* Fix issue 2: hightlight machine keyword
 
 ## 0.1.2
 * Intermediate release after renaming the package

@@ -1,0 +1,4 @@
+'name': 'Event-B'
+'patterns': [
+]
+'scopeName': 'source.eventb'

@@ -1,6 +1,6 @@
 {
   "name": "language-b-event-b",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "B and Event-B language support in Atom",
   "engines": {
     "atom": "*",

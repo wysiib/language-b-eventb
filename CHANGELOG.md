@@ -1,5 +1,5 @@
 ## 0.1.3
-* Autocomplete snippet for PRE
+* Autocomplete snippet for PRE, VAR, ANY, LET, IF, IF ELSE, CHOICE
 * Follow naming conventions more strictly
 * Fix issue 1: do not highlight keywords in strings
 * Fix issue 2: hightlight machine keyword

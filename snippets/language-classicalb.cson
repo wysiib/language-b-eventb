@@ -5,3 +5,21 @@
   'PRE':
     'prefix': 'pre'
     'body': 'PRE ${1:p}\nTHEN\n\t${2:G}\nEND'
+  'VAR':
+    'prefix': 'var'
+    'body': 'VAR ${1:z}\nIN\n\t${2:G}\nEND'
+  'ANY':
+    'prefix': 'any'
+    'body': 'ANY ${1:z}\nWHERE\n\t${2:P}\nTHEN\n\t${3:G}\nEND'
+  'LET':
+    'prefix': 'let'
+    'body': 'LET ${1:x}\nBE ${2:E}\nIN\n\t${3:G}\nEND'
+  'IF':
+    'prefix': 'if'
+    'body': 'IF ${1:p}\nTHEN\n\t${2:G}\nEND'
+  'IF ... ELSE':
+    'prefix': 'ifelse'
+    'body': 'IF ${1:p}\nTHEN\n\t${2:G}\nELSE\n\t${2:H}\nEND'
+  'CHOICE':
+    'prefix': 'choice'
+    'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'

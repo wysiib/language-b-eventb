@@ -1,0 +1,45 @@
+'fileTypes': [
+  'mch'
+  'imp'
+]
+'name': 'Classical B'
+'patterns': [
+  {
+    'match': "\\b0'.\\b"
+    'name': 'constant.numeric.classicalb'
+  }
+  {
+    'begin': '/\\*'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.classicalb'
+    'end': '\\*/'
+    'name': 'comment.block.classicalb'
+  }
+
+#          ctext::addHighlightClassForRegexp $textWidget syntax_type $col {([0-9]*\s*\.\.\s*[0-9]*|-->|-->(>)?|>->(>)?|\+->(>)?|>\+>(>)?|<->|\
+#                         scope_\w*|SET_PREF_\w*|FORCE_SYMMETRY_\w*)|((FIN(1?)|perm|i?seq1?|BOOL|struct|STRING|INT(EGER)?|NAT(URAL)?1?)(?=\M))}
+#          ctext::addHighlightClass $textWidget syntax_logical $col {not or TRUE FALSE bool GOAL ANIMATION_FUNCTION_DEFAULT\
+#                         HEURISTIC_FUNCTION}
+#          ctext::addHighlightClassForRegexp $textWidget syntax_logical1 $col {(TRUE|FALSE|&|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*|(<)?=>|!|\#)}
+#
+#          ctext::addHighlightClass $textWidget syntax_operator1 $col {SIGMA PI MININT MAXINT pred succ|id INTER UNION card dom ran max\
+#min union inter size mod fnc rel rev conc front tail first last rec closure1 closure iterate prj1 prj2 <=>}
+#          ctext::addHighlightClassForRegexp $textWidget syntax_operator $col {(\\|\|->|>=|<=(>)?|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|<(<)?\||\
+#                         \|>(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
+#
+#	  ctext::addHighlightClassForRegexp $textWidget syntax_assignment $col {(<--|:=|=(=)?(>)?|\|\||::)}
+#
+#          ctext::addHighlightClass $textWidget syntax_keyword $col {OPERATIONS EVENTS ASSERTIONS INITIALIZATION INITIALISATION SEES PROMOTES\
+#                        USES INCLUDES IMPORTS REFINES EXTENDS REFINEMENT CSP_CONTROLLER SYSTEM MODEL IMPLEMENTATION INVARIANT\
+#                        CONCRETE_VARIABLES ABSTRACT_VARIABLES VARIABLES PROPERTIES CONSTANTS ABSTRACT_CONSTANTS CONCRETE_CONSTANTS\
+#                        CONSTRAINTS SETS DEFINITIONS VALUES}
+#          ctext::addHighlightClassForRegexp $textWidget syntax_keyword_Machine $col {(MACHINE(\s*\w\w*)?|END\s*\Z)}
+#
+#          ctext::addHighlightClass $textWidget syntax_control_keyword $col {skip LET BE VAR IN ANY WHILE DO VARIANT ELSIF IF THEN ELSE\
+#                        EITHER CASE SELECT ASSERT WHEN PRE BEGIN END CHOICE WHERE OR OF}
+#          ctext::addHighlightClass $textWidget syntax_unsupported1 black {invariant_violated both_true_false left right infix arity subtree \
+#                         son father rank mirror sizet postfix prefix sons top const btree tree}
+#          ctext::addHighlightClassForRegexp $textWidget syntax_unsupported black {(wd_error(_false|_true)?|timeout(_false|_true)?|\#\#\#\#)}
+]
+'scopeName': 'source.classicalb'

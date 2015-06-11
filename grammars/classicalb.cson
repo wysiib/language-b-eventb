@@ -5,10 +5,6 @@
 'name': 'Classical B'
 'patterns': [
   {
-    'match': "\\b0'.\\b"
-    'name': 'constant.numeric.classicalb'
-  }
-  {
     'begin': '/\\*'
     'captures':
       '0':
@@ -16,30 +12,99 @@
     'end': '\\*/'
     'name': 'comment.block.classicalb'
   }
+  {
+    'match': 'INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|IMPLEMENTATION|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
+    'name': 'keyword.machineclause.classicalb'
+  }
+  {
+    'match': 'INTER|UNION|SIGMA|PI'
+    'name': 'keyword.operator.set.classicalb'
+  }
+  {
+    'match': ':'
+    'name': 'operator.set.classicalb'
+  }
+  {
+    'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
+    'name': 'operator.relation.classicalb'
+  }
+  {
+    'match': '<--|:=|=(=)?(>)?|::'
+    'name': 'operator.assignment.classicalb'
+  }
+# breaks test for some reason
+#  {
+#    'match': '\|\|'
+#    'name': 'operator.parallel.classicalb'
+#  }
+  {
+    'match': "\\b0'.\\b"
+    'name': 'constant.numeric.classicalb'
+  }
+  {
+    'match': 'MININT|MAXINT'
+    'name': 'keyword.support.constant.numeric.classicalb'
+  }
+  {
+    'match': 'TRUE|FALSE'
+    'name': 'keyword.support.constant.boolean.classicalb'
+  }
+  # todo: add IN
+  {
+    'match': 'skip|LET|BE|VAR|ANY|WHILE|DO|VARIANT|ELSIF|IF|THEN|ELSE|EITHER|CASE|SELECT|ASSERT|WHEN|PRE|BEGIN|END|CHOICE|WHERE|OR|OF'
+    'name': 'keyword.support.control.classicalb'
+  }
+  {
+    'match': 'not|or'
+    'name': 'keyword.operator.logical.classicalb'
+  }
+  {
+    'match': '&'
+    'name': 'operator.logical.classicalb'
+  }
+  {
+    'match': 'first|last|tail|front'
+    'name': 'keyword.operator.sequence.classicalb'
+  }
+  {
+    'match': 'mod'
+    'name': 'keyword.operator.numeric.classicalb'
+  }
+# should only match if followed by opening bracket
+#  {
+#    'match': 'min|max|card|union|inter|size'
+#    'name': 'keyword.operator.set.classicalb'
+#  }
+  {
+    'match': 'ran|dom'
+    'name': 'keyword.operator.relation.classicalb'
+  }
+  {
+    'match': 'bool'
+    'name': 'keyword.operator.boolean.classicalb'
+  }
+  {
+    'match': 'MACHINE \s*'
+    'captures':
+      '1':
+        'name': 'keyword.machine.classicalb'
+      '2':
+        'name': 'entity.machine.classicalb'
+    'name': 'meta.machine.classicalb'
+  }
+  {
+    'match': '\\b[a-zA-Z][a-zA-Z0-9_]*(?![(])\\b'
+    'name': 'identifier.classicalb'
+  }
+  {
+    'match': 'SET_PREF_\w*|FORCE_SYMMETRY_\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*'
+    'name': 'keyword.definition.classicalb'
+  }
 
-#          ctext::addHighlightClassForRegexp $textWidget syntax_type $col {([0-9]*\s*\.\.\s*[0-9]*|-->|-->(>)?|>->(>)?|\+->(>)?|>\+>(>)?|<->|\
-#                         scope_\w*|SET_PREF_\w*|FORCE_SYMMETRY_\w*)|((FIN(1?)|perm|i?seq1?|BOOL|struct|STRING|INT(EGER)?|NAT(URAL)?1?)(?=\M))}
-#          ctext::addHighlightClass $textWidget syntax_logical $col {not or TRUE FALSE bool GOAL ANIMATION_FUNCTION_DEFAULT\
-#                         HEURISTIC_FUNCTION}
-#          ctext::addHighlightClassForRegexp $textWidget syntax_logical1 $col {(TRUE|FALSE|&|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*|(<)?=>|!|\#)}
-#
-#          ctext::addHighlightClass $textWidget syntax_operator1 $col {SIGMA PI MININT MAXINT pred succ|id INTER UNION card dom ran max\
-#min union inter size mod fnc rel rev conc front tail first last rec closure1 closure iterate prj1 prj2 <=>}
-#          ctext::addHighlightClassForRegexp $textWidget syntax_operator $col {(\\|\|->|>=|<=(>)?|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|<(<)?\||\
+# todo: still missing:
+#    syntax_type {((FIN(1?)|perm|i?seq1?|BOOL|struct|STRING|INT(EGER)?|NAT(URAL)?1?)(?=\M))}
+#    syntax_operator {pred succ|id fnc rel rev conc rec closure1 closure iterate prj1 prj2 <=>}
+#    syntax_operator {(\\|\|->|>=|<=(>)?|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|<(<)?\||\
 #                         \|>(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
-#
-#	  ctext::addHighlightClassForRegexp $textWidget syntax_assignment $col {(<--|:=|=(=)?(>)?|\|\||::)}
-#
-#          ctext::addHighlightClass $textWidget syntax_keyword $col {OPERATIONS EVENTS ASSERTIONS INITIALIZATION INITIALISATION SEES PROMOTES\
-#                        USES INCLUDES IMPORTS REFINES EXTENDS REFINEMENT CSP_CONTROLLER SYSTEM MODEL IMPLEMENTATION INVARIANT\
-#                        CONCRETE_VARIABLES ABSTRACT_VARIABLES VARIABLES PROPERTIES CONSTANTS ABSTRACT_CONSTANTS CONCRETE_CONSTANTS\
-#                        CONSTRAINTS SETS DEFINITIONS VALUES}
-#          ctext::addHighlightClassForRegexp $textWidget syntax_keyword_Machine $col {(MACHINE(\s*\w\w*)?|END\s*\Z)}
-#
-#          ctext::addHighlightClass $textWidget syntax_control_keyword $col {skip LET BE VAR IN ANY WHILE DO VARIANT ELSIF IF THEN ELSE\
-#                        EITHER CASE SELECT ASSERT WHEN PRE BEGIN END CHOICE WHERE OR OF}
-#          ctext::addHighlightClass $textWidget syntax_unsupported1 black {invariant_violated both_true_false left right infix arity subtree \
-#                         son father rank mirror sizet postfix prefix sons top const btree tree}
-#          ctext::addHighlightClassForRegexp $textWidget syntax_unsupported black {(wd_error(_false|_true)?|timeout(_false|_true)?|\#\#\#\#)}
 ]
 'scopeName': 'source.classicalb'

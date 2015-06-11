@@ -16,3 +16,14 @@ describe 'Classical B grammar', ->
     it "tokenizes an empty block comment", ->
       {tokens} = grammar.tokenizeLine '/**/'
       expect(tokens[0]).toEqual value: '/*', scopes: [ 'source.classicalb', 'comment.block.classicalb', 'punctuation.definition.comment.classicalb' ]
+      expect(tokens[1]).toEqual value: '*/', scopes: [ 'source.classicalb', 'comment.block.classicalb', 'punctuation.definition.comment.classicalb' ]
+
+  describe "simple clause", ->
+    it "tokenizes a simple machine clause including an operator", ->
+      {tokens} = grammar.tokenizeLine 'INVARIANT access : USER <-> PRINTER'
+      expect(tokens[0]).toEqual value: 'INVARIANT', scopes: [ 'source.classicalb', 'keyword.machineclause.classicalb' ]
+      expect(tokens[2]).toEqual value: 'access', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[4]).toEqual value: ':', scopes: [ 'source.classicalb', 'operator.set.classicalb' ]
+      expect(tokens[6]).toEqual value: 'USER', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[8]).toEqual value: '<->', scopes: [ 'source.classicalb', 'operator.relation.classicalb' ]
+      expect(tokens[10]).toEqual value: 'PRINTER', scopes: [ 'source.classicalb', 'identifier.classicalb' ]

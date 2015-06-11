@@ -1,5 +1,5 @@
 {
-  "name": "language-b-event-b",
+  "name": "language-b-eventb",
   "version": "0.1.0",
   "description": "B and Event-B language support in Atom",
   "engines": {
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wysiib/language-b-event-b.git"
+    "url": "https://github.com/wysiib/language-b-eventb.git"
   },
   "bugs": {
-    "url": "https://github.com/wysiib/language-b-event-b/issues"
+    "url": "https://github.com/wysiib/language-b-eventb/issues"
   },
-  "homepage": "https://github.com/wysiib/language-b-event-b"
+  "homepage": "https://github.com/wysiib/language-b-eventb"
 }

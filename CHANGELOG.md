@@ -1,3 +1,5 @@
+## 0.1.3
+* Autocomplete snippet for PRE
 ## 0.1.2
 * Intermediate release after renaming the package
 

@@ -1,3 +1,6 @@
+## 0.1.4
+* fix highlighting of integer constants
+
 ## 0.1.3
 * Autocomplete snippet for PRE, VAR, ANY, LET, IF, IF ELSE, CHOICE
 * Follow naming conventions more strictly

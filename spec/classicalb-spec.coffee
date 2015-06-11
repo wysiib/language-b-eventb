@@ -12,6 +12,13 @@ describe 'Classical B grammar', ->
     expect(grammar).toBeTruthy()
     expect(grammar.scopeName).toBe 'source.classicalb'
 
+  describe "literals", ->
+    it "tokenizes integer literals", ->
+      {tokens} = grammar.tokenizeLine "1 = 5"
+      expect(tokens[0]).toEqual value: '1', scopes: [ 'source.classicalb', 'constant.numeric.classicalb' ]
+      expect(tokens[2]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.assignment.classicalb' ]
+      expect(tokens[4]).toEqual value: '5', scopes: [ 'source.classicalb', 'constant.numeric.classicalb' ]
+
   describe "comments", ->
     it "tokenizes an empty block comment", ->
       {tokens} = grammar.tokenizeLine '/**/'

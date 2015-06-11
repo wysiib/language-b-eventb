@@ -59,7 +59,7 @@
 #    'name': 'operator.parallel.classicalb'
 #  }
   {
-    'match': "\\b0'.\\b"
+    'match': "\\b\\d+"
     'name': 'constant.numeric.classicalb'
   }
   {

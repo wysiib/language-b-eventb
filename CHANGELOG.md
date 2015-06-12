@@ -1,23 +1,26 @@
+## 0.1.6
+* highlighting for records
+
 ## 0.1.5
 * more improvements to highlighting of operators
 
 ## 0.1.4
-* Autocomplete snippets for SELECT and CASE
-* Fix highlighting of integer constants
-* Fix issue 5: or (and others) when part of identifiers
-* Fix issue 6: highlighting of assignment operators
+* autocomplete snippets for SELECT and CASE
+* fix highlighting of integer constants
+* fix issue 5: or (and others) when part of identifiers
+* fix issue 6: highlighting of assignment operators
 
 ## 0.1.3
-* Autocomplete snippet for PRE, VAR, ANY, LET, IF, IF ELSE, CHOICE
-* Follow naming conventions more strictly
-* Fix issue 1: do not highlight keywords in strings
-* Fix issue 2: hightlight machine keyword
+* autocomplete snippet for PRE, VAR, ANY, LET, IF, IF ELSE, CHOICE
+* follow naming conventions more strictly
+* fix issue 1: do not highlight keywords in strings
+* fix issue 2: highlight machine keyword
 
 ## 0.1.2
-* Intermediate release after renaming the package
+* intermediate release after renaming the package
 
 ## 0.1.1
-* Add language snippet for while substitution
+* add language snippet for while substitution
 
 ## 0.1.0 - First Release
-* Basic support for classical B
+* basic support for classical B

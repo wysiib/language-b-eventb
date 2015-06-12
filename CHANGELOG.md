@@ -1,3 +1,6 @@
+## 0.1.5
+* more improvements to highlighting of operators
+
 ## 0.1.4
 * Autocomplete snippets for SELECT and CASE
 * Fix highlighting of integer constants

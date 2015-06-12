@@ -1,5 +1,6 @@
 ## 0.1.6
 * highlighting for records
+* merge pull request by dohan: autocomplete for VARIABLES, CONSTANTS and ASSERTIONS clauses
 
 ## 0.1.5
 * more improvements to highlighting of operators

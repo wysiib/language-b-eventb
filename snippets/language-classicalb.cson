@@ -23,3 +23,12 @@
   'CHOICE':
     'prefix': 'choice'
     'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'
+  'SELECT':
+    'prefix': 'select'
+    'body': 'SELECT ${1:p}\nTHEN\n\t{$2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nEND'
+  'SELECT ... ELSE':
+    'prefix': 'selectelse'
+    'body': 'SELECT ${1:p}\nTHEN\n\t{$2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nELSE\n\t${5:E}END'
+  'CASE':
+    'prefix': 'choice'
+    'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'

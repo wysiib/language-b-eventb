@@ -3,6 +3,7 @@
   'imp'
 ]
 'name': 'Classical B'
+'scopeName': 'source.classicalb'
 'patterns': [
   {
     'begin': '/\\*'
@@ -119,4 +120,3 @@
 #    syntax_operator {(\\|\|->|>=|<=(>)?|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|<(<)?\||\
 #                         \|>(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
 ]
-'scopeName': 'source.classicalb'

@@ -84,12 +84,16 @@
     'name': 'keyword.operator.set.classicalb'
   }
   {
-    'match': '<--|:=|=(=)?(>)?|::'
-    'name': 'keyword.operator.assignment.classicalb'
+    'match': '\\bmin\\b|\\bmax\\b|\\bcard\\b|\\bunion\\b|\\binter\\b|\\bsize\\b'
+    'name': 'keyword.operator.set.classicalb'
   }
   {
     'match': ':|\\\\/|/\\\\'
     'name': 'keyword.operator.set.classicalb'
+  }
+  {
+    'match': '<--|:=|=(=)?(>)?|::'
+    'name': 'keyword.operator.assignment.classicalb'
   }
   {
     'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
@@ -129,7 +133,7 @@
     'name': 'keyword.operator.logical.classicalb'
   }
   {
-    'match': '&'
+    'match': '&|(<)=>'
     'name': 'keyword.operator.logical.classicalb'
   }
   {
@@ -140,11 +144,10 @@
     'match': '\\bmod\\b'
     'name': 'keyword.operator.numeric.classicalb'
   }
-# should only match if followed by opening bracket
-#  {
-#    'match': 'min|max|card|union|inter|size'
-#    'name': 'keyword.operator.set.classicalb'
-#  }
+  {
+    'match': '\\brec\\b|\\bstruct\\b'
+    'name': 'keyword.operator.record.classicalb'
+  }
   {
     'match': '\\bran\\b|\\bdom\\b'
     'name': 'keyword.operator.relation.classicalb'
@@ -163,7 +166,7 @@
   }
 
 # todo: still missing:
-#    syntax_type {((FIN(1?)|perm|i?seq1?|struct)(?=\M))}
-#    syntax_operator {pred succ|id fnc rel rev conc rec closure1 closure iterate prj1 prj2 <=>}
+#    syntax_type {((FIN(1?)|perm|i?seq1?)(?=\M))}
+#    syntax_operator {pred succ|id fnc rel rev conc closure1 closure iterate prj1 prj2 <=>}
 #    syntax_operator {(\\|>=|<=(>)?|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
 ]

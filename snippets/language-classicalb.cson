@@ -1,4 +1,13 @@
 '.source.classicalb':
+  'VARIABLES':
+    'prefix': 'VARIABLES'
+    'body': 'VARIABLES\n\t${1:x}\nINVARIANT\n\t${2:P}\nINITIALISATION\n\t${4:I}'
+  'CONSTANTS':
+    'prefix': 'CONSTANTS'
+    'body': 'CONSTANTS\n\t${1:c}\nPROPERTIES\n\t${2:P}'
+  'ASSERTIONS':
+    'prefix': 'ASSERTIONS'
+    'body': 'ASSERTIONS\n\t${1:a}' 
   'WHILE':
     'prefix': 'while'
     'body': 'WHILE ${1:p}\nDO\n\t${2:G}\nVARIANT ${3:E}\nINVARIANT ${4:Q}\nEND'

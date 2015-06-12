@@ -42,16 +42,16 @@
     'name': 'keyword.operator.set.classicalb'
   }
   {
+    'match': '<--|:=|=(=)?(>)?|::'
+    'name': 'keyword.operator.assignment.classicalb'
+  }
+  {
     'match': ':'
     'name': 'keyword.operator.set.classicalb'
   }
   {
     'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
     'name': 'keyword.operator.relation.classicalb'
-  }
-  {
-    'match': '<--|:=|=(=)?(>)?|::'
-    'name': 'keyword.operator.assignment.classicalb'
   }
 # breaks test for some reason
 #  {
@@ -63,20 +63,20 @@
     'name': 'constant.numeric.classicalb'
   }
   {
-    'match': 'MININT|MAXINT'
+    'match': '\\bMININT\\b|\\bMAXINT\\b'
     'name': 'constant.language.numeric.classicalb'
   }
   {
-    'match': 'TRUE|FALSE'
+    'match': '\\bTRUE\\b|\\bFALSE\\b'
     'name': 'constant.language.other.classicalb'
   }
   # todo: add IN
   {
-    'match': 'skip|LET|BE|VAR|ANY|WHILE|DO|VARIANT|ELSIF|IF|THEN|ELSE|EITHER|CASE|SELECT|ASSERT|WHEN|PRE|BEGIN|END|CHOICE|WHERE|OR|OF'
+    'match': '\\bskip\\b|\\bLET\\b|\\bBE\\b|\\bVAR\\b|\\bANY\\b|\\bWHILE\\b|\\bDO\\b|\\bVARIANT\\b|\\bELSIF\\b|\\bIF\\b|\\bTHEN\\b|\\bELSE\\b|\\bEITHER\\b|\\bCASE\\b|\\bSELECT\\b|\\bASSERT\\b|\\bWHEN\\b|\\bPRE\\b|\\bBEGIN\\b|\\bEND\\b|\\bCHOICE\\b|\\bWHERE\\b|\\bOR\\b|\\bOF\\b'
     'name': 'keyword.control.classicalb'
   }
   {
-    'match': 'not|or'
+    'match': '\\bnot\\b|\\bor\\b'
     'name': 'keyword.operator.logical.classicalb'
   }
   {
@@ -84,11 +84,11 @@
     'name': 'keyword.operator.logical.classicalb'
   }
   {
-    'match': 'first|last|tail|front'
+    'match': '\\bfirst\\b|\\blast\\b|\\btail\\b|\\bfront\\b'
     'name': 'keyword.operator.sequence.classicalb'
   }
   {
-    'match': 'mod'
+    'match': '\\bmod\\b'
     'name': 'keyword.operator.numeric.classicalb'
   }
 # should only match if followed by opening bracket
@@ -105,7 +105,7 @@
     'name': 'keyword.operator.boolean.classicalb'
   }
   {
-    'match': '\\b[a-zA-Z][a-zA-Z0-9_]*(?![(])\\b'
+    'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
     'name': 'identifier.classicalb'
   }
   {

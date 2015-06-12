@@ -13,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/wysiib/language-b-eventb/issues"
   },
-  "homepage": "https://github.com/wysiib/language-b-eventb"
+  "homepage": "https://github.com/wysiib/language-b-eventb",
+  "devDependencies": {
+    "coffeelint": "^1.10.1"
+  }
 }

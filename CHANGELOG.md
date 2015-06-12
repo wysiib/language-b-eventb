@@ -1,5 +1,8 @@
 ## 0.1.4
-* fix highlighting of integer constants
+* Autocomplete snippets for SELECT and CASE
+* Fix highlighting of integer constants
+* Fix issue 5: or (and others) when part of identifiers
+* Fix issue 6: highlighting of assignment operators
 
 ## 0.1.3
 * Autocomplete snippet for PRE, VAR, ANY, LET, IF, IF ELSE, CHOICE

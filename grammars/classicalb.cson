@@ -168,5 +168,5 @@
 # todo: still missing:
 #    syntax_type {((FIN(1?)|perm|i?seq1?)(?=\M))}
 #    syntax_operator {pred succ|id fnc rel rev conc closure1 closure iterate prj1 prj2 <=>}
-#    syntax_operator {(\\|>=|<=(>)?|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
+#    syntax_operator {(\\|>=|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
 ]

@@ -38,11 +38,11 @@ describe 'Classical B tickets', ->
   describe "missing highlights", ->
     it "it should highlight the machine keyword (issue 2)", ->
       {tokens} = grammar.tokenizeLine 'MACHINE test\nVARIABLES x\nEND\n'
-      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'keyword.other.machineclause.classicalb' ]
-      expect(tokens[2]).toEqual value: 'test', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[4]).toEqual value: 'VARIABLES', scopes: [ 'source.classicalb', 'keyword.other.machineclause.classicalb' ]
-      expect(tokens[6]).toEqual value: 'x', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[8]).toEqual value: 'END', scopes: [ 'source.classicalb', 'keyword.control.classicalb' ]
+      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machine.classicalb' ]
+      expect(tokens[2]).toEqual value: 'test', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'identifier.classicalb' ]
+      expect(tokens[4]).toEqual value: 'VARIABLES', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machineclause.classicalb' ]
+      expect(tokens[6]).toEqual value: 'x', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'identifier.classicalb' ]
+      expect(tokens[8]).toEqual value: 'END', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machine.classicalb' ]
     it "should highlight the assignment operator completely (issue 6)", ->
       {tokens} = grammar.tokenizeLine 'xx:=iv'
       expect(tokens[0]).toEqual value: 'xx', scopes: [ 'source.classicalb', 'identifier.classicalb' ]

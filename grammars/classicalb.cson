@@ -35,7 +35,48 @@
     ]
   }
   {
-    'match': 'MACHINE|INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|IMPLEMENTATION|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
+    'begin': '\\bMACHINE\\b'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.other.machine.classicalb'
+    'end': '\\bEND\\b'
+    'endCaptures':
+      '0':
+        'name': 'keyword.other.machine.classicalb'
+    'name': 'meta.machine.classicalb'
+    'patterns': [
+      { 'include' : "$self" }
+    ]
+  }
+  {
+    'begin': '\\bIMPLEMENTATION\\b'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.other.implementation.classicalb'
+    'end': '\\bEND\\b'
+    'endCaptures':
+      '0':
+        'name': 'keyword.other.implementation.classicalb'
+    'name': 'meta.implementation.classicalb'
+    'patterns': [
+      { 'include' : "$self" }
+    ]
+  }
+  {
+    'begin': '\\bPRE\\b'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.control.classicalb'
+    'end': '\\bEND\\b'
+    'endCaptures':
+      '0':
+        'name': 'keyword.control.classicalb'
+    'patterns': [
+      { 'include' : "$self" }
+    ]
+  }
+  {
+    'match': 'INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
     'name': 'keyword.other.machineclause.classicalb'
   }
   {
@@ -73,7 +114,7 @@
   }
   # todo: add IN
   {
-    'match': '\\bskip\\b|\\bLET\\b|\\bBE\\b|\\bVAR\\b|\\bANY\\b|\\bWHILE\\b|\\bDO\\b|\\bVARIANT\\b|\\bELSIF\\b|\\bIF\\b|\\bTHEN\\b|\\bELSE\\b|\\bEITHER\\b|\\bCASE\\b|\\bSELECT\\b|\\bASSERT\\b|\\bWHEN\\b|\\bPRE\\b|\\bBEGIN\\b|\\bEND\\b|\\bCHOICE\\b|\\bWHERE\\b|\\bOR\\b|\\bOF\\b'
+    'match': '\\bskip\\b|\\bLET\\b|\\bBE\\b|\\bVAR\\b|\\bANY\\b|\\bWHILE\\b|\\bDO\\b|\\bVARIANT\\b|\\bELSIF\\b|\\bIF\\b|\\bTHEN\\b|\\bELSE\\b|\\bEITHER\\b|\\bCASE\\b|\\bSELECT\\b|\\bASSERT\\b|\\bWHEN\\b|\\bBEGIN\\b|\\bEND\\b|\\bCHOICE\\b|\\bWHERE\\b|\\bOR\\b|\\bOF\\b'
     'name': 'keyword.control.classicalb'
   }
   {

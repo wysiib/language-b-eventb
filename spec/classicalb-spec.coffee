@@ -19,6 +19,14 @@ describe 'Classical B grammar', ->
       expect(tokens[2]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.assignment.classicalb' ]
       expect(tokens[4]).toEqual value: '5', scopes: [ 'source.classicalb', 'constant.numeric.classicalb' ]
 
+  describe "machines", ->
+    it "detects the difference between END of MACHINE and END of PRE", ->
+      {tokens} = grammar.tokenizeLine "MACHINE test PRE x=5 END END"
+      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machine.classicalb' ]
+      expect(tokens[4]).toEqual value: 'PRE', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.control.classicalb' ]
+      expect(tokens[10]).toEqual value: 'END', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.control.classicalb' ]
+      expect(tokens[12]).toEqual value: 'END', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machine.classicalb' ]
+
   describe "operators", ->
     it "detects or correctly", ->
       {tokens} = grammar.tokenizeLine "orb"

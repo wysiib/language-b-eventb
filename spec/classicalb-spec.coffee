@@ -52,6 +52,13 @@ describe 'Classical B grammar', ->
       expect(tokens[8]).toEqual value: '|>', scopes: [ 'source.classicalb', 'keyword.operator.relation.classicalb' ]
       expect(tokens[10]).toEqual value: 'pp', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
 
+    it "tokenizes the maplet operator", ->
+      {tokens} = grammar.tokenizeLine "uu |-> pp"
+      expect(tokens[0]).toEqual value: 'uu', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[1]).toEqual value: ' ', scopes: [ 'source.classicalb' ]
+      expect(tokens[2]).toEqual value: '|->', scopes: [ 'source.classicalb', 'keyword.operator.relation.classicalb' ]
+      expect(tokens[4]).toEqual value: 'pp', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+
   describe "comments", ->
     it "tokenizes an empty block comment", ->
       {tokens} = grammar.tokenizeLine '/**/'

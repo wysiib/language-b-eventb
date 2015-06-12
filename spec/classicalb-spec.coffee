@@ -47,7 +47,7 @@ describe 'Classical B grammar', ->
       {tokens} = grammar.tokenizeLine "nn := card(access |> {pp})"
       expect(tokens[0]).toEqual value: 'nn', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[2]).toEqual value: ':=', scopes: [ 'source.classicalb', 'keyword.operator.assignment.classicalb' ]
-      expect(tokens[4]).toEqual value: 'card', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[4]).toEqual value: 'card', scopes: [ 'source.classicalb', 'keyword.operator.set.classicalb' ]
       expect(tokens[6]).toEqual value: 'access', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[8]).toEqual value: '|>', scopes: [ 'source.classicalb', 'keyword.operator.relation.classicalb' ]
       expect(tokens[10]).toEqual value: 'pp', scopes: [ 'source.classicalb', 'identifier.classicalb' ]

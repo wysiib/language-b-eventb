@@ -80,6 +80,10 @@
     'name': 'keyword.other.machineclause.classicalb'
   }
   {
+    'match': '<--|:=|=(=)?(>)?|::'
+    'name': 'keyword.operator.assignment.classicalb'
+  }
+  {
     'match': 'INTER|UNION|SIGMA|PI'
     'name': 'keyword.operator.set.classicalb'
   }
@@ -90,10 +94,6 @@
   {
     'match': ':|\\\\/|/\\\\'
     'name': 'keyword.operator.set.classicalb'
-  }
-  {
-    'match': '<--|:=|=(=)?(>)?|::'
-    'name': 'keyword.operator.assignment.classicalb'
   }
   {
     'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'

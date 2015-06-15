@@ -7,7 +7,7 @@
     'body': 'CONSTANTS\n\t${1:c}\nPROPERTIES\n\t${2:P}'
   'ASSERTIONS':
     'prefix': 'ASSERTIONS'
-    'body': 'ASSERTIONS\n\t${1:a}' 
+    'body': 'ASSERTIONS\n\t${1:a}'
   'WHILE':
     'prefix': 'while'
     'body': 'WHILE ${1:p}\nDO\n\t${2:G}\nVARIANT ${3:E}\nINVARIANT ${4:Q}\nEND'
@@ -34,10 +34,13 @@
     'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'
   'SELECT':
     'prefix': 'select'
-    'body': 'SELECT ${1:p}\nTHEN\n\t{$2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nEND'
+    'body': 'SELECT ${1:p}\nTHEN\n\t${2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nEND'
   'SELECT ... ELSE':
     'prefix': 'selectelse'
-    'body': 'SELECT ${1:p}\nTHEN\n\t{$2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nELSE\n\t${5:E}END'
+    'body': 'SELECT ${1:p}\nTHEN\n\t${2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nELSE\n\t${5:E}\nEND'
   'CASE':
     'prefix': 'choice'
     'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'
+  'Set Pref MININT':
+    'prefix': 'set minint'
+    'body': 'SET_PREF_MININT == ${1:n};'  

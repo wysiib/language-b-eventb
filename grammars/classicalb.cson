@@ -76,6 +76,32 @@
     ]
   }
   {
+    'begin': '\\bSELECT\\b'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.control.classicalb'
+    'end': '\\bEND\\b'
+    'endCaptures':
+      '0':
+        'name': 'keyword.control.classicalb'
+    'patterns': [
+      { 'include' : "$self" }
+    ]
+  }
+  {
+    'begin': '\\bANY\\b'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.control.classicalb'
+    'end': '\\bEND\\b'
+    'endCaptures':
+      '0':
+        'name': 'keyword.control.classicalb'
+    'patterns': [
+      { 'include' : "$self" }
+    ]
+  }
+  {
     'match': 'INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
     'name': 'keyword.other.machineclause.classicalb'
   }
@@ -110,10 +136,6 @@
   {
     'match': "\\b\\d+"
     'name': 'constant.numeric.classicalb'
-  }
-  {
-    'match': '\\bMININT\\b|\\bMAXINT\\b'
-    'name': 'constant.language.numeric.classicalb'
   }
   {
     'match': '\\bTRUE\\b|\\bFALSE\\b'
@@ -157,12 +179,17 @@
     'name': 'keyword.operator.boolean.classicalb'
   }
   {
-    'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
-    'name': 'identifier.classicalb'
+    'match': 'GOAL|SET_PREF_\w*|FORCE_SYMMETRY_\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*'
+    'name': 'keyword.control.definition.classicalb'
   }
   {
-    'match': 'SET_PREF_\w*|FORCE_SYMMETRY_\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*'
-    'name': 'keyword.control.definition.classicalb'
+    'match': '\\bMININT\\b|\\bMAXINT\\b'
+    'name': 'constant.language.numeric.classicalb'
+  }
+
+  {
+    'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
+    'name': 'identifier.classicalb'
   }
 
 # todo: still missing:

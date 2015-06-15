@@ -179,7 +179,7 @@
     'name': 'keyword.operator.boolean.classicalb'
   }
   {
-    'match': 'GOAL|SET_PREF_\w*|FORCE_SYMMETRY_\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\w*|ANIMATION_STR\w*|ASSERT_(LTL|CTL)\w*'
+    'match': 'GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*'
     'name': 'keyword.control.definition.classicalb'
   }
   {

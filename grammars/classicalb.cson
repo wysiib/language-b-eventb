@@ -110,15 +110,19 @@
     'name': 'keyword.operator.assignment.classicalb'
   }
   {
-    'match': 'INTER|UNION|SIGMA|PI'
+    'match': 'INTER|⋂|UNION|⋃|SIGMA|∑|PI|∏'
     'name': 'keyword.operator.set.classicalb'
   }
   {
-    'match': '\\bmin\\b|\\bmax\\b|\\bcard\\b|\\bunion\\b|\\binter\\b|\\bsize\\b'
+    'match': '\\bmin\\b|\\bmax\\b|\\bcard\\b|\\bsize\\b'
     'name': 'keyword.operator.set.classicalb'
   }
   {
-    'match': ':|\\\\/|/\\\\'
+    'match': ':|∈|∉|\\\\/|/\\\\|∪|∩'
+    'name': 'keyword.operator.set.classicalb'
+  }
+  {
+    'match': '⊄|⊈|⊂|⊆'
     'name': 'keyword.operator.set.classicalb'
   }
   {
@@ -130,12 +134,20 @@
     'name': 'keyword.operator.relation.classicalb'
   }
   {
+    'match': '↠|↦|⤀|⤖|⇸|⤔|◀|←|→|↔|↣|▶|⇾|⋖|⊗|◁|▷|⇽'
+    'name': 'keyword.operator.relation.classicalb'
+  }
+  {
     'match': '\\|\\|'
     'name': 'keyword.operator.parallel.classicalb'
   }
   {
     'match': "\\b\\d+"
     'name': 'constant.numeric.classicalb'
+  }
+  {
+    'match': "{}|∅"
+    'name': 'constant.set.classicalb'
   }
   {
     'match': '\\bTRUE\\b|\\bFALSE\\b'
@@ -145,17 +157,20 @@
     'match': '\\bBOOL\\b|\\bSTRING\\b|\\bINT(EGER)?\\b|\\bNAT(URAL)?(1)?\\b'
     'name': 'constant.language.other.classicalb'
   }
-  # todo: add IN
   {
     'match': '\\bskip\\b|\\bLET\\b|\\bBE\\b|\\bVAR\\b|\\bANY\\b|\\bWHILE\\b|\\bDO\\b|\\bVARIANT\\b|\\bELSIF\\b|\\bIF\\b|\\bTHEN\\b|\\bELSE\\b|\\bEITHER\\b|\\bCASE\\b|\\bSELECT\\b|\\bASSERT\\b|\\bWHEN\\b|\\bBEGIN\\b|\\bEND\\b|\\bCHOICE\\b|\\bWHERE\\b|\\bOR\\b|\\bOF\\b'
     'name': 'keyword.control.classicalb'
   }
   {
-    'match': '\\bnot\\b|\\bor\\b'
+    'match': '\\bnot\\b|¬|\\bor\\b|∨'
     'name': 'keyword.operator.logical.classicalb'
   }
   {
-    'match': '&|(<)=>'
+    'match': '&|∧|(<)=>|⇔|⇒|≠'
+    'name': 'keyword.operator.logical.classicalb'
+  }
+  {
+    'match': '!|#|∀|∃'
     'name': 'keyword.operator.logical.classicalb'
   }
   {
@@ -175,8 +190,16 @@
     'name': 'keyword.operator.relation.classicalb'
   }
   {
+    'match': '%|λ'
+    'name': 'keyword.operator.relation.classicalb'
+  }
+  {
     'match': 'bool'
     'name': 'keyword.operator.boolean.classicalb'
+  }
+  {
+    'match': '>|<|>=|=<|≤|≥'
+    'name': 'keyword.operator.numeric.classicalb'
   }
   {
     'match': 'GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*'
@@ -186,14 +209,8 @@
     'match': '\\bMININT\\b|\\bMAXINT\\b'
     'name': 'constant.language.numeric.classicalb'
   }
-
   {
     'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
     'name': 'identifier.classicalb'
   }
-
-# todo: still missing:
-#    syntax_type {((FIN(1?)|perm|i?seq1?)(?=\M))}
-#    syntax_operator {pred succ|id fnc rel rev conc closure1 closure iterate prj1 prj2 <=>}
-#    syntax_operator {(\\|>=|%|\*\*|~|(//)?<(<)?:|/(:|=)|<\+|\^|<-(>)?|\{|\}|\[\]|\|\[\]|<>|/(\|)?\\|\\(\|)?/)}
 ]

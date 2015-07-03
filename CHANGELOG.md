@@ -1,3 +1,7 @@
+## 0.2.0
+* support for Atelier-B Unicode format
+* some bugfixes in classical B highlighter
+
 ## 0.1.6
 * highlighting for records
 * merge pull requests by dohan:

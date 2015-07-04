@@ -6,6 +6,7 @@
     "atom": "*",
     "node": "*"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/wysiib/language-b-eventb.git"

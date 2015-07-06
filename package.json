@@ -2,6 +2,13 @@
   "name": "language-b-eventb",
   "version": "0.2.0",
   "description": "B and Event-B language support in Atom",
+  "keywords": [
+    "B",
+    "Event-B",
+    "Specification",
+    "Formal Method",
+    "Machine"
+  ],
   "engines": {
     "atom": "*",
     "node": "*"

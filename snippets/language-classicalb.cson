@@ -43,4 +43,4 @@
     'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'
   'Set Pref MININT':
     'prefix': 'set minint'
-    'body': 'SET_PREF_MININT == ${1:n};'  
+    'body': 'SET_PREF_MININT == ${1:n};'

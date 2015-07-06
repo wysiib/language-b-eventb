@@ -1,3 +1,9 @@
+## 0.2.2
+* autocomplete for relations and functions
+
+## 0.2.1
+* license and keywords added
+
 ## 0.2.0
 * support for Atelier-B Unicode format
 * some bugfixes in classical B highlighter

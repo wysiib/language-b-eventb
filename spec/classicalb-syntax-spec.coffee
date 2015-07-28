@@ -79,3 +79,20 @@ describe 'Classical B grammar', ->
       expect(tokens[6]).toEqual value: 'USER', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[8]).toEqual value: '<->', scopes: [ 'source.classicalb', 'keyword.operator.relation.classicalb' ]
       expect(tokens[10]).toEqual value: 'PRINTER', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+
+  describe "Atelier-B Unicode", ->
+    it "tokenizes unicode maplet", ->
+      {tokens} = grammar.tokenizeLine "topleft ↦ top_middle"
+      expect(tokens[0]).toEqual value: 'topleft', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[2]).toEqual value: '↦', scopes: [ 'source.classicalb', 'keyword.operator.relation.classicalb' ]
+      expect(tokens[4]).toEqual value: 'top_middle', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+
+    it "tokenizes an involved predicate using unicode", ->
+      {tokens} = grammar.tokenizeLine "∀(t1,t2).(t1∈TRACKS ∧ t2∈TRACKS ∧ t1≠t2 ⇒ ran(occ(t1)) ∩ ran(occ(t2)) = ∅ )"
+      expect(tokens[0]).toEqual value: '∀', scopes: [ 'source.classicalb', 'keyword.operator.logical.classicalb' ]
+      expect(tokens[2]).toEqual value: 't1', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[4]).toEqual value: 't2', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[6]).toEqual value: 't1', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[7]).toEqual value: '∈', scopes: [ 'source.classicalb', 'keyword.operator.set.classicalb' ]
+      expect(tokens[10]).toEqual value: '∧', scopes: [ 'source.classicalb', 'keyword.operator.logical.classicalb' ]
+      expect(tokens[19]).toEqual value: '≠', scopes: [ 'source.classicalb', 'keyword.operator.logical.classicalb' ]

@@ -1,4 +1,128 @@
+'fileTypes': [
+  'eventb'
+]
 'name': 'Event-B'
 'patterns': [
+    {
+      'begin': '"'
+      'beginCaptures':
+        '0':
+          'name': 'punctuation.definition.string.begin.eventb'
+      'end': '"'
+      'endCaptures':
+        '0':
+          'name': 'punctuation.definition.string.end.eventb'
+      'name': 'string.quoted.double.eventb'
+      'patterns': [
+        {
+          'match': '\\\\.'
+          'name': 'constant.character.escape.eventb'
+        }
+        {
+          'match': '""'
+          'name': 'constant.character.escape.quote.eventb'
+        }
+      ]
+    }
+    {
+      'begin': '\\machine\\b'
+      'beginCaptures':
+        '0':
+          'name': 'keyword.other.machine.eventb'
+      'end': '\\bend\\b'
+      'endCaptures':
+        '0':
+          'name': 'keyword.other.machine.eventb'
+      'name': 'meta.machine.eventb'
+      'patterns': [
+        { 'include' : "$self" }
+      ]
+    }
+    {
+      'begin': '\\bany\\b'
+      'beginCaptures':
+        '0':
+          'name': 'keyword.control.eventb'
+      'end': '\\end\\b'
+      'endCaptures':
+        '0':
+          'name': 'keyword.control.eventb'
+      'patterns': [
+        { 'include' : "$self" }
+      ]
+    }
+    {
+      'match': 'INITIALIZATION|INITIALISATION|invariants|events|variables|constants'
+      'name': 'keyword.other.machineclause.eventb'
+    }
+    {
+      'match': '<--|:=|=(=)?(>)?|::'
+      'name': 'keyword.operator.assignment.eventb'
+    }
+    {
+      'match': '\\bmin\\b|\\bmax\\b|\\bcard\\b|\\bunion\\b|\\binter\\b|\\bsize\\b'
+      'name': 'keyword.operator.set.eventb'
+    }
+    {
+      'match': ':|\\\\/|/\\\\'
+      'name': 'keyword.operator.set.eventb'
+    }
+    {
+      'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
+      'name': 'keyword.operator.relation.eventb'
+    }
+    {
+      'match': '(\\|>(>)?)|((<)?<\\|)|(\\|->)'
+      'name': 'keyword.operator.relation.eventb'
+    }
+    {
+      'match': '\\|\\|'
+      'name': 'keyword.operator.parallel.eventb'
+    }
+    {
+      'match': "\\b\\d+"
+      'name': 'constant.numeric.eventb'
+    }
+    {
+      'match': '\\bTRUE\\b|\\bFALSE\\b'
+      'name': 'constant.language.other.eventb'
+    }
+    {
+      'match': '\\bBOOL\\b|\\bSTRING\\b|\\bINT(EGER)?\\b|\\bNAT(URAL)?(1)?\\b'
+      'name': 'constant.language.other.eventb'
+    }
+    # todo: add IN
+    {
+      'match': '\\bskip\\b'
+      'name': 'keyword.control.eventb'
+    }
+    {
+      'match': '\\bnot\\b|\\bor\\b'
+      'name': 'keyword.operator.logical.eventb'
+    }
+    {
+      'match': '&|(<)=>'
+      'name': 'keyword.operator.logical.eventb'
+    }
+    {
+      'match': '\\bmod\\b'
+      'name': 'keyword.operator.numeric.eventb'
+    }
+    {
+      'match': '\\bran\\b|\\bdom\\b'
+      'name': 'keyword.operator.relation.eventb'
+    }
+    {
+      'match': 'bool'
+      'name': 'keyword.operator.boolean.eventb'
+    }
+    {
+      'match': '\\bMININT\\b|\\bMAXINT\\b'
+      'name': 'constant.language.numeric.eventb'
+    }
+    {
+      'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
+      'name': 'identifier.eventb'
+    }
 ]
 'scopeName': 'source.eventb'

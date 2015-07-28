@@ -1,5 +1,12 @@
+## 0.2.0
+* support for Atelier-B Unicode format
+* some bugfixes in classical B highlighter
+
 ## 0.1.6
 * highlighting for records
+* merge pull requests by dohan:
+  * autocomplete for VARIABLES, CONSTANTS and ASSERTIONS clauses
+  * several fixes to syntax highlighting
 
 ## 0.1.5
 * more improvements to highlighting of operators

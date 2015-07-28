@@ -1,11 +1,19 @@
 {
   "name": "language-b-eventb",
-  "version": "0.1.5",
+  "version": "0.2.1",
   "description": "B and Event-B language support in Atom",
+  "keywords": [
+    "B",
+    "Event-B",
+    "Specification",
+    "Formal Method",
+    "Machine"
+  ],
   "engines": {
     "atom": "*",
     "node": "*"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/wysiib/language-b-eventb.git"

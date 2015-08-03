@@ -43,4 +43,43 @@
     'body': 'CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND'
   'Set Pref MININT':
     'prefix': 'set minint'
-    'body': 'SET_PREF_MININT == ${1:n};'  
+    'body': 'SET_PREF_MININT == ${1:n};'
+  'Set Pref MAXINT':
+    'prefix': 'set minint'
+    'body': 'SET_PREF_MININT == ${1:n};'
+  'B:INT':
+    'prefix': 'INT'
+    'body': 'INT;'
+  'B:INTEGER':
+    'prefix': 'INTEGER'
+    'body': 'INTEGER'
+  'B:NAT':
+    'prefix': 'NAT'
+    'body': 'NAT'
+  'B:NATURAL':
+    'prefix': 'NATURAL'
+    'body': 'NATURAL'
+  'B: -->':
+    'prefix': 'funcTotal'
+    'body': '-->'
+  'B: >->':
+    'prefix': 'funcTotalInjection'
+    'body': '>->'
+  'B: -->>':
+    'prefix': 'funcTotalSurjection'
+    'body': '>->'
+  'B: >->>':
+    'prefix': 'funcTotalBijection'
+    'body': '>->>'
+  'B: +->':
+    'prefix': 'funcPartial'
+    'body': '+->'
+  'B: >+>':
+    'prefix': 'funcPartialInjection'
+    'body': '+->>'
+  'B: >+>':
+    'prefix': 'funcPartialSurjection'
+    'body': '+->>'
+  'B: >+>>':
+    'prefix': 'funcBijection'
+    'body': '>+>>'

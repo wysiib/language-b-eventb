@@ -1,6 +1,8 @@
 {
   "name": "language-b-eventb",
   "version": "0.2.2",
+  "activationCommands": [],
+  "main": "./lib/linter-b",
   "description": "B and Event-B language support in Atom",
   "keywords": [
     "B",
@@ -10,7 +12,7 @@
     "Machine"
   ],
   "engines": {
-    "atom": "*",
+    "atom": ">1.0.0",
     "node": "*"
   },
   "license": "MIT",
@@ -24,5 +26,12 @@
   "homepage": "https://github.com/wysiib/language-b-eventb",
   "devDependencies": {
     "coffeelint": "^1.10.1"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
   }
 }

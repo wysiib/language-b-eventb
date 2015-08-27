@@ -1,3 +1,6 @@
+## 0.3.0
+* added linter / reporting of parse and type errors using ProB CLI
+
 ## 0.2.2
 * autocomplete for relations and functions
 

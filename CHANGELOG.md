@@ -1,3 +1,6 @@
+## 0.3.2
+* add / fix line comments
+
 ## 0.3.1
 * fix reporting of parser errors reported by ProB CLI without position information
 

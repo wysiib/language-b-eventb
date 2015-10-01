@@ -1,3 +1,6 @@
+## 0.3.1
+* fix reporting of parser errors reported by ProB CLI without position information
+
 ## 0.3.0
 * added linter / reporting of parse and type errors using ProB CLI
 

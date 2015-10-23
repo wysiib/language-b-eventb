@@ -1,5 +1,6 @@
 'fileTypes': [
   'mch'
+  'ref'
   'imp'
 ]
 'name': 'Classical B'

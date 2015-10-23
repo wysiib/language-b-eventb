@@ -1,3 +1,6 @@
+## 0.3.3
+* fix missing file type for refinements (pull request by dohan)
+
 ## 0.3.2
 * add / fix line comments
 

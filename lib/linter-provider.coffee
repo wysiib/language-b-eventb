@@ -2,7 +2,8 @@ path = require 'path'
 child_process = require 'child_process'
 
 module.exports = class LinterProvider
-  regex_parse_error = "! An error occurred !\n! source\\(parse_error\\)\n! \\[(\\d+),(\\d+)\\] (.*) in file: (.*)"
+  regex_parse_error_pre_151_beta7_format = "! An error occurred !\n! source\\(parse_error\\)\n! \\[(\\d+),(\\d+)\\] (.*) in file: (.*)"
+  regex_parse_error = "! An error occurred !\n! source\\(parse_error\\)\n! (.*)\n\n?! Line: (\\d+) Column: (\\d+) in file: (.*)"
   regex_parse_error_no_position = "! An error occurred !\n! source\\(parse_error\\)\n! (.*) in file: (.*)"
   regex_type_error = "! An error occurred !\n! source\\(type_error\\)\n! (.*)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file .*\n"
 
@@ -24,8 +25,16 @@ module.exports = class LinterProvider
         toReturn = []
         for line in data
           console.log "B Linter Provider: #{line}"
+          if line.match regex_parse_error_pre_151_beta7_format
+            [line, column, message, file] = line.match(regex_parse_error_pre_151_beta7_format)[1..5]
+            toReturn.push(
+              type: "error",
+              text: message,
+              filePath: file.normalize()
+              range: [[line - 1, column - 1], [line - 1, column - 1]]
+            )
           if line.match regex_parse_error
-            [line, column, message, file] = line.match(regex_parse_error)[1..5]
+            [message, line, column, file] = line.match(regex_parse_error)[1..5]
             toReturn.push(
               type: "error",
               text: message,

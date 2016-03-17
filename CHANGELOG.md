@@ -1,3 +1,6 @@
+## 0.4.0
+* fix parsing of error messages reported by ProB versions > 1.5.1-beta6
+
 ## 0.3.3
 * fix missing file type for refinements (pull request by dohan)
 

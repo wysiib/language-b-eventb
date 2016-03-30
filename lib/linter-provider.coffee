@@ -33,7 +33,7 @@ module.exports = class LinterProvider
               type: "error",
               text: message,
               filePath: file.normalize()
-              range: [[line - 1, column - 1], [line - 1, column - 1]]
+              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
             )
           result = line.match regex_parse_error
           if result
@@ -42,7 +42,7 @@ module.exports = class LinterProvider
               type: "error",
               text: message,
               filePath: file.normalize()
-              range: [[line - 1, column - 1], [line - 1, column - 1]]
+              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
             )
           result = line.match regex_parse_error_no_position
           if result
@@ -59,7 +59,7 @@ module.exports = class LinterProvider
               type: "error",
               text: message,
               filePath: file.normalize()
-              range: [[line - 1, column - 1], [line - 1, column - 1]]
+              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
             )
           result = line.match regex_type_error
           if result
@@ -68,6 +68,6 @@ module.exports = class LinterProvider
               type: "error",
               text: message,
               filePath: file.normalize()
-              range: [[line - 1, column - 1], [line - 1, column - 1]]
+              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
             )
         Resolve toReturn

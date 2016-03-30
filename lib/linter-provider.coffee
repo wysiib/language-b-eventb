@@ -26,39 +26,44 @@ module.exports = class LinterProvider
         toReturn = []
         for line in data
           console.log "B Linter Provider: #{line}"
-          if line.match regex_parse_error_pre_151_beta7_format
-            [line, column, message, file] = line.match(regex_parse_error_pre_151_beta7_format)[1..5]
+          result = line.match regex_parse_error_pre_151_beta7_format
+          if result
+            [line, column, message, file] = result[1..4]
             toReturn.push(
               type: "error",
               text: message,
               filePath: file.normalize()
               range: [[line - 1, column - 1], [line - 1, column - 1]]
             )
-          if line.match regex_parse_error
-            [message, line, column, file] = line.match(regex_parse_error)[1..5]
+          result = line.match regex_parse_error
+          if result
+            [message, line, column, file] = result[1..4]
             toReturn.push(
               type: "error",
               text: message,
               filePath: file.normalize()
               range: [[line - 1, column - 1], [line - 1, column - 1]]
             )
-          if line.match regex_parse_error_no_position
-            [message, file] = line.match(regex_parse_error_no_position)[1..3]
+          result = line.match regex_parse_error_no_position
+          if result
+            [message, file] = result[1..2]
             toReturn.push(
               type: "error",
               text: message,
               filePath: file.normalize()
             )
-          if line.match regex_type_error_pre_151_beta7_format
-            [message, file, line, column] = line.match(regex_type_error_pre_151_beta7_format)[1..5]
+          result = line.match regex_type_error_pre_151_beta7_format
+          if result
+            [message, file, line, column] = result[1..4]
             toReturn.push(
               type: "error",
               text: message,
               filePath: file.normalize()
               range: [[line - 1, column - 1], [line - 1, column - 1]]
             )
-          if line.match regex_type_error
-            [message, line, column, file] = line.match(regex_type_error)[1..5]
+          result = line.match regex_type_error
+          if result
+            [message, line, column, file] = result[1..4]
             toReturn.push(
               type: "error",
               text: message,

@@ -1,3 +1,6 @@
+## 0.4.1
+* fix parsing of type errors
+
 ## 0.4.0
 * fix parsing of error messages reported by ProB versions > 1.5.1-beta6
 

@@ -5,7 +5,8 @@ module.exports = class LinterProvider
   regex_parse_error_pre_151_beta7_format = "! An error occurred !\n! source\\(parse_error\\)\n! \\[(\\d+),(\\d+)\\] (.*) in file: (.*)"
   regex_parse_error = "! An error occurred !\n! source\\(parse_error\\)\n! (.*)\n\n?! Line: (\\d+) Column: (\\d+) in file: (.*)"
   regex_parse_error_no_position = "! An error occurred !\n! source\\(parse_error\\)\n! (.*) in file: (.*)"
-  regex_type_error = "! An error occurred !\n! source\\(type_error\\)\n! (.*)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file .*\n"
+  regex_type_error_pre_151_beta7_format = "! An error occurred !\n! source\\(type_error\\)\n! (.*)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file .*\n"
+  regex_type_error = "! An error occurred !\n! source\\(type_error\\)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
 
   getCommand = ->
     "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 "
@@ -48,8 +49,16 @@ module.exports = class LinterProvider
               text: message,
               filePath: file.normalize()
             )
+          if line.match regex_type_error_pre_151_beta7_format
+            [message, file, line, column] = line.match(regex_type_error_pre_151_beta7_format)[1..5]
+            toReturn.push(
+              type: "error",
+              text: message,
+              filePath: file.normalize()
+              range: [[line - 1, column - 1], [line - 1, column - 1]]
+            )
           if line.match regex_type_error
-            [message, file, line, column] = line.match(regex_type_error)[1..5]
+            [message, line, column, file] = line.match(regex_type_error)[1..5]
             toReturn.push(
               type: "error",
               text: message,

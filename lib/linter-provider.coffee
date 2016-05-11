@@ -25,49 +25,68 @@ module.exports = class LinterProvider
       process.on 'close', ->
         toReturn = []
         for line in data
-          console.log "B Linter Provider: #{line}"
-          result = line.match regex_parse_error_pre_151_beta7_format
-          if result
-            [line, column, message, file] = result[1..4]
-            toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-            )
-          result = line.match regex_parse_error
-          if result
-            [message, line, column, file] = result[1..4]
-            toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-            )
-          result = line.match regex_parse_error_no_position
-          if result
-            [message, file] = result[1..2]
-            toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-            )
-          result = line.match regex_type_error_pre_151_beta7_format
-          if result
-            [message, file, line, column] = result[1..4]
-            toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-            )
-          result = line.match regex_type_error
-          if result
-            [message, line, column, file] = result[1..4]
-            toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-            )
+          console.log "B Linter Provider line: #{line}"
+          regex_all = new RegExp(regex_parse_error_pre_151_beta7_format, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_parse_error_pre_151_beta7_format
+              [line, column, message, file] = result[1..4]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
+                range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              )
+
+          regex_all = new RegExp(regex_parse_error, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_parse_error
+              [message, line, column, file] = result[1..4]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
+                range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              )
+
+          regex_all = new RegExp(regex_parse_error_no_position, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_parse_error_no_position
+              [message, file] = result[1..2]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
+              )
+
+          regex_all = new RegExp(regex_type_error_pre_151_beta7_format, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_type_error_pre_151_beta7_format
+              [message, file, line, column] = result[1..4]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
+                range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              )
+
+          regex_all = new RegExp(regex_type_error, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_type_error
+              [message, line, column, file] = result[1..4]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
+                range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              )
         Resolve toReturn

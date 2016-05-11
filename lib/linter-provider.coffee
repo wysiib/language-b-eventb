@@ -26,7 +26,7 @@ module.exports = class LinterProvider
         toReturn = []
         for line in data
           console.log "B Linter Provider line: #{line}"
-          regex_all = new RegExp(regex_parse_error_pre_151_beta7_format, "g"); #all matches
+          regex_all = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -39,7 +39,7 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_parse_error, "g"); #all matches
+          regex_all = new RegExp(regex_parse_error, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -52,7 +52,7 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_parse_error_no_position, "g"); #all matches
+          regex_all = new RegExp(regex_parse_error_no_position, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -64,7 +64,7 @@ module.exports = class LinterProvider
                 filePath: file.normalize()
               )
 
-          regex_all = new RegExp(regex_type_error_pre_151_beta7_format, "g"); #all matches
+          regex_all = new RegExp(regex_type_error_pre_151_beta7_format, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -77,7 +77,7 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_type_error, "g"); #all matches
+          regex_all = new RegExp(regex_type_error, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array

@@ -1,25 +1,25 @@
 '.source.classicalb':
-  'Relation':
-    'prefix': 'relation'
+  'Relation <-> ':
+    'prefix': 'relation'| '<->'
     'body': '<->'
-  'Partial Function':
+  'Partial Function +->':
     'prefix': 'partialfunction'
     'body': '+->'
-  'Total Function':
+  'Total Function -->':
     'prefix': 'totalfunction'
     'body': '-->'
-  'Partial Injection':
+  'Partial Injection >+>':
     'prefix': 'partialinjection'
     'body': '>+>'
-  'Total Injection':
+  'Total Injection >->':
     'prefix': 'totalinjection'
     'body': '>->'
-  'Partial Surjection':
+  'Partial Surjection +->>':
     'prefix': 'partialsurjection'
     'body': '+->>'
-  'Total Surjection':
+  'Total Surjection -->>':
     'prefix': 'totalsurjection'
-    'body': '-->'
-  'Bijection':
+    'body': '-->>'
+  'Bijection >->>':
     'prefix': 'bijection'
     'body': '>->>'

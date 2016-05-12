@@ -9,7 +9,7 @@ module.exports = LinterB =
     LinterProvider = require './linter-provider'
     provider = new LinterProvider()
     return {
-      grammarScopes: ['source.classicalb']
+      grammarScopes: ['source.classicalb.rules', 'source.classicalb']
       scope: 'file'
       lint: provider.lint
       lintOnFly: false

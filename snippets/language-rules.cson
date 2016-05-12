@@ -1,0 +1,13 @@
+'.source.classicalb.rules':
+  'RULE ... ':
+    'prefix': 'rule'
+    'body': 'RULE ${1:name} = \n\tSELECT\n\t${2:guard}\tTHEN ${3:substitution}\nEND'
+  'RULE_FORALL ':
+    'prefix': 'rule forall'
+    'body': 'RULE_FORALL ${1:paramter}\nWHERE ${2:predicate}\nEXPECT ${3:predicate}\nCOUNTEREXAMPLES ${4:string}\nEND'
+  'RULE_SUCCESS':
+    'prefix': 'rule success'
+    'body': 'RULE_SUCCESS'
+  'RULE_FAIL':
+    'prefix': 'rule fail'
+    'body': 'RULE_FAIL'

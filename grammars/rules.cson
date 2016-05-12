@@ -1,0 +1,29 @@
+'fileTypes': [
+  'mch'
+  'rmch'
+]
+'name': 'B Rules'
+'scopeName': 'source.classicalb.rules'
+'patterns': [
+  {
+    'begin': '\\bRULES_MACHINE\\b'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.other.machine.classicalb'
+    'end': '\\bEND\\b'
+    'endCaptures':
+      '0':
+        'name': 'keyword.other.machine.classicalb'
+    'name': 'meta.machine.classicalb'
+    'patterns': [
+      {
+        'match': '''(?x)
+          \\b(RULE|RULE_SUCCESS|RULE_SUCCESS|RULE_FAIL|RULE_FORALL|FORALL|COUNTEREXAMPLES
+          |EXPECT|RULE_FAIL)\\b
+        '''
+        'name': 'keyword.control.classicalb'
+      }
+      { 'include' : "source.classicalb" }
+    ]
+  }
+]

@@ -10,13 +10,14 @@
   { 'include': '#comments' }
   { 'include': '#strings' }
   { 'include': '#components' }
-  { 'include': '#keyword_machineclauses'}
+  { 'include': '#machineclauses'}
   { 'include': '#control_blocks'}
   { 'include': '#keyword_control'}
   { 'include': '#keyword_operators' }
   { 'include': '#constant_values' }
   { 'include': '#preferences' }
   { 'include': '#identifiers' }
+  { 'include': '#invalid'}
 ]
 
 'repository':
@@ -70,7 +71,7 @@
         ]
       }
     ]
-  'keyword_machineclauses':
+  'machineclauses':
     'patterns': [
       {
         'match': '''(?x)
@@ -79,7 +80,7 @@
           |ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS
           |CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES)\\b
         '''
-        'name': 'keyword.other.machineclause.classicalb'
+        'name': 'storage.type.clause.classicalb'
       }
     ]
   'keyword_control':
@@ -143,6 +144,19 @@
           'name': 'keyword.operator.set.classicalb'
         }
         {
+          'begin': '{'
+          'beginCaptures':
+            '0':
+              'name': 'punctuation.definition.set.begin.classicalb'
+          'end': '}'
+          'endCaptures':
+            '0':
+              'name': 'punctuation.definition.set.end.classicalb'
+          'patterns': [
+            { 'include' : "$self" }
+          ]
+        }
+        {
           'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
           'name': 'keyword.operator.relation.classicalb'
         }
@@ -175,15 +189,11 @@
         }
         {
           'match': '\\b(TRUE|FALSE)\\b'
-          'name': 'constant.language.other.classicalb'
+          'name': 'constant.language.boolean.classicalb'
         }
         {
-          'match': '\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?)\\b'
-          'name': 'constant.language.other.classicalb'
-        }
-        {
-          'match': '\\b(MININT|MAXINT)\\b'
-          'name': 'constant.language.numeric.classicalb'
+          'match': '\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT)\\b'
+          'name': 'constant.other.sets.classicalb'
         }
       ]
   'control_blocks':
@@ -211,29 +221,15 @@
   'components':
     'patterns':[
       {
-        'begin': '\\b(MACHINE|SYSTEM|MODEL|REFINEMENT)\\b'
+        'begin': '\\b(MACHINE|SYSTEM|MODEL|REFINEMENT|IMPLEMENTATION)\\b'
         'beginCaptures':
           '0':
-            'name': 'keyword.other.machine.classicalb'
+            'name': 'storage.type.machine.start.classicalb'
         'end': '\\bEND\\b'
         'endCaptures':
           '0':
-            'name': 'keyword.other.machine.classicalb'
+            'name': 'storage.type.machine.end.classicalb'
         'name': 'meta.machine.classicalb'
-        'patterns': [
-          { 'include' : "$self" }
-        ]
-      }
-      {
-        'begin': '\\bIMPLEMENTATION\\b'
-        'beginCaptures':
-          '0':
-            'name': 'keyword.other.implementation.classicalb'
-        'end': '\\bEND\\b'
-        'endCaptures':
-          '0':
-            'name': 'keyword.other.implementation.classicalb'
-        'name': 'meta.implementation.classicalb'
         'patterns': [
           { 'include' : "$self" }
         ]
@@ -247,6 +243,17 @@
             |HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*
             |ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b
           '''
-          'name': 'keyword.control.definition.classicalb'
+          'name': 'entity.other.attribute-name.classicalb'
         }
+    ]
+  'invalid':
+    'patterns':[
+      {
+        'match': '@|\\?|€'
+        'name': 'invalid.illegal.other.classicalb'
+      }
+      {
+        'match': ';(\\s)*;'
+        'name': 'invalid.illegal.other.classicalb'
+      }
     ]

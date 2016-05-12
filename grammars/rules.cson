@@ -9,11 +9,11 @@
     'begin': '\\bRULES_MACHINE\\b'
     'beginCaptures':
       '0':
-        'name': 'keyword.other.machine.classicalb'
+        'name': 'storage.type.machine.rules.start.classicalb'
     'end': '\\bEND\\b'
     'endCaptures':
       '0':
-        'name': 'keyword.other.machine.classicalb'
+        'name': 'storage.type.machine.rules.end.classicalb'
     'name': 'meta.machine.classicalb'
     'patterns': [
       {

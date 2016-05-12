@@ -30,10 +30,10 @@ describe 'Classical B grammar', ->
   describe "machines", ->
     it "detects the difference between END of MACHINE and END of PRE", ->
       {tokens} = grammar.tokenizeLine "MACHINE test PRE x=5 END END"
-      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machine.classicalb' ]
+      expect(tokens[0]).toEqual value: 'MACHINE', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'storage.type.machine.start.classicalb' ]
       expect(tokens[4]).toEqual value: 'PRE', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.control.classicalb' ]
       expect(tokens[10]).toEqual value: 'END', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.control.classicalb' ]
-      expect(tokens[12]).toEqual value: 'END', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'keyword.other.machine.classicalb' ]
+      expect(tokens[12]).toEqual value: 'END', scopes: [ 'source.classicalb', 'meta.machine.classicalb', 'storage.type.machine.end.classicalb' ]
 
   describe "operators", ->
     it "detects or correctly", ->
@@ -58,7 +58,9 @@ describe 'Classical B grammar', ->
       expect(tokens[4]).toEqual value: 'card', scopes: [ 'source.classicalb', 'keyword.operator.set.classicalb' ]
       expect(tokens[6]).toEqual value: 'access', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[8]).toEqual value: '|>', scopes: [ 'source.classicalb', 'keyword.operator.relation.classicalb' ]
-      expect(tokens[10]).toEqual value: 'pp', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[10]).toEqual value: '{', scopes: [ 'source.classicalb', 'punctuation.definition.set.begin.classicalb' ]
+      expect(tokens[11]).toEqual value: 'pp', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
+      expect(tokens[12]).toEqual value: '}', scopes: [ 'source.classicalb', 'punctuation.definition.set.end.classicalb' ]
 
     it "tokenizes the maplet operator", ->
       {tokens} = grammar.tokenizeLine "uu |-> pp"
@@ -81,7 +83,7 @@ describe 'Classical B grammar', ->
   describe "simple clause", ->
     it "tokenizes a simple machine clause including an operator", ->
       {tokens} = grammar.tokenizeLine 'ASSERTIONS access : USER <-> PRINTER'
-      expect(tokens[0]).toEqual value: 'ASSERTIONS', scopes: [ 'source.classicalb', 'keyword.other.machineclause.classicalb' ]
+      expect(tokens[0]).toEqual value: 'ASSERTIONS', scopes: [ 'source.classicalb', 'storage.type.clause.classicalb' ]
       expect(tokens[2]).toEqual value: 'access', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[4]).toEqual value: ':', scopes: [ 'source.classicalb', 'keyword.operator.set.classicalb' ]
       expect(tokens[6]).toEqual value: 'USER', scopes: [ 'source.classicalb', 'identifier.classicalb' ]

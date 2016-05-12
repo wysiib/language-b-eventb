@@ -16,7 +16,7 @@ describe 'Classical B tickets', ->
     it "should not color keywords in strings (issue 1)", ->
       {tokens} = grammar.tokenizeLine 'x = "DOWN"'
       expect(tokens[0]).toEqual value: 'x', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[2]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.assignment.classicalb' ]
+      expect(tokens[2]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.equality.classicalb' ]
       expect(tokens[4]).toEqual value: '"', scopes: [ 'source.classicalb', 'string.quoted.double.classicalb', 'punctuation.definition.string.begin.classicalb' ]
       expect(tokens[5]).toEqual value: 'DOWN', scopes: [ 'source.classicalb', 'string.quoted.double.classicalb' ]
       expect(tokens[6]).toEqual value: '"', scopes: [ 'source.classicalb', 'string.quoted.double.classicalb', 'punctuation.definition.string.end.classicalb' ]
@@ -24,7 +24,7 @@ describe 'Classical B tickets', ->
       {tokens} = grammar.tokenizeLine 'Sort(yy) = PRE yy:ID THEN xx:=yy END'
       expect(tokens[0]).toEqual value: 'Sort', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[2]).toEqual value: 'yy', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
-      expect(tokens[4]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.assignment.classicalb' ]
+      expect(tokens[4]).toEqual value: '=', scopes: [ 'source.classicalb', 'keyword.operator.equality.classicalb' ]
       expect(tokens[6]).toEqual value: 'PRE', scopes: [ 'source.classicalb', 'keyword.control.classicalb' ]
       expect(tokens[8]).toEqual value: 'yy', scopes: [ 'source.classicalb', 'identifier.classicalb' ]
       expect(tokens[9]).toEqual value: ':', scopes: [ 'source.classicalb', 'keyword.operator.set.classicalb' ]

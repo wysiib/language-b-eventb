@@ -6,220 +6,247 @@
 'name': 'Classical B'
 'scopeName': 'source.classicalb'
 'patterns': [
-  {
-    'begin': '/\\*'
-    'captures':
-      '0':
-        'name': 'punctuation.definition.comment.classicalb'
-    'end': '\\*/'
-    'name': 'comment.block.classicalb'
-  }
-  {
-    'begin': '//'
-    'captures':
-      '0':
-        'name': 'punctuation.definition.comment.classicalb'
-    'end': '\n'
-    'name': 'comment.line.classicalb'
-  }
-  {
-    'begin': '"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.classicalb'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.classicalb'
-    'name': 'string.quoted.double.classicalb'
-    'patterns': [
-      {
-        'match': '\\\\.'
-        'name': 'constant.character.escape.classicalb'
-      }
-      {
-        'match': '""'
-        'name': 'constant.character.escape.quote.classicalb'
-      }
-    ]
-  }
-  {
-    'begin': '\\bMACHINE\\b'
-    'beginCaptures':
-      '0':
-        'name': 'keyword.other.machine.classicalb'
-    'end': '\\bEND\\b'
-    'endCaptures':
-      '0':
-        'name': 'keyword.other.machine.classicalb'
-    'name': 'meta.machine.classicalb'
-    'patterns': [
-      { 'include' : "$self" }
-    ]
-  }
-  {
-    'begin': '\\bIMPLEMENTATION\\b'
-    'beginCaptures':
-      '0':
-        'name': 'keyword.other.implementation.classicalb'
-    'end': '\\bEND\\b'
-    'endCaptures':
-      '0':
-        'name': 'keyword.other.implementation.classicalb'
-    'name': 'meta.implementation.classicalb'
-    'patterns': [
-      { 'include' : "$self" }
-    ]
-  }
-  {
-    'begin': '\\bPRE\\b'
-    'beginCaptures':
-      '0':
-        'name': 'keyword.control.classicalb'
-    'end': '\\bEND\\b'
-    'endCaptures':
-      '0':
-        'name': 'keyword.control.classicalb'
-    'patterns': [
-      { 'include' : "$self" }
-    ]
-  }
-  {
-    'begin': '\\bSELECT\\b'
-    'beginCaptures':
-      '0':
-        'name': 'keyword.control.classicalb'
-    'end': '\\bEND\\b'
-    'endCaptures':
-      '0':
-        'name': 'keyword.control.classicalb'
-    'patterns': [
-      { 'include' : "$self" }
-    ]
-  }
-  {
-    'begin': '\\bANY\\b'
-    'beginCaptures':
-      '0':
-        'name': 'keyword.control.classicalb'
-    'end': '\\bEND\\b'
-    'endCaptures':
-      '0':
-        'name': 'keyword.control.classicalb'
-    'patterns': [
-      { 'include' : "$self" }
-    ]
-  }
-  {
-    'match': 'INITIALIZATION|INITIALISATION|OPERATIONS|ASSERTIONS|SEES|PROMOTES|USES|INCLUDES|IMPORTS|REFINES|EXTENDS|REFINEMENT|CSP_CONTROLLER|SYSTEM|MODEL|INVARIANT|CONCRETE_VARIABLES|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES'
-    'name': 'keyword.other.machineclause.classicalb'
-  }
-  {
-    'match': '<--|:=|=(=)?(>)?|::'
-    'name': 'keyword.operator.assignment.classicalb'
-  }
-  {
-    'match': 'INTER|⋂|UNION|⋃|SIGMA|∑|PI|∏'
-    'name': 'keyword.operator.set.classicalb'
-  }
-  {
-    'match': '\\bmin\\b|\\bmax\\b|\\bcard\\b|\\bsize\\b'
-    'name': 'keyword.operator.set.classicalb'
-  }
-  {
-    'match': ':|∈|∉|\\\\/|/\\\\|∪|∩'
-    'name': 'keyword.operator.set.classicalb'
-  }
-  {
-    'match': '⊄|⊈|⊂|⊆'
-    'name': 'keyword.operator.set.classicalb'
-  }
-  {
-    'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
-    'name': 'keyword.operator.relation.classicalb'
-  }
-  {
-    'match': '(\\|>(>)?)|((<)?<\\|)|(\\|->)'
-    'name': 'keyword.operator.relation.classicalb'
-  }
-  {
-    'match': '↠|↦|⤀|⤖|⇸|⤔|◀|←|→|↔|↣|▶|⇾|⋖|⊗|◁|▷|⇽'
-    'name': 'keyword.operator.relation.classicalb'
-  }
-  {
-    'match': '\\|\\|'
-    'name': 'keyword.operator.parallel.classicalb'
-  }
-  {
-    'match': "\\b\\d+"
-    'name': 'constant.numeric.classicalb'
-  }
-  {
-    'match': "{}|∅"
-    'name': 'constant.set.classicalb'
-  }
-  {
-    'match': '\\bTRUE\\b|\\bFALSE\\b'
-    'name': 'constant.language.other.classicalb'
-  }
-  {
-    'match': '\\bBOOL\\b|\\bSTRING\\b|\\bINT(EGER)?\\b|\\bNAT(URAL)?(1)?\\b'
-    'name': 'constant.language.other.classicalb'
-  }
-  {
-    'match': '\\bskip\\b|\\bLET\\b|\\bBE\\b|\\bVAR\\b|\\bANY\\b|\\bWHILE\\b|\\bDO\\b|\\bVARIANT\\b|\\bELSIF\\b|\\bIF\\b|\\bTHEN\\b|\\bELSE\\b|\\bEITHER\\b|\\bCASE\\b|\\bSELECT\\b|\\bASSERT\\b|\\bWHEN\\b|\\bBEGIN\\b|\\bEND\\b|\\bCHOICE\\b|\\bWHERE\\b|\\bOR\\b|\\bOF\\b'
-    'name': 'keyword.control.classicalb'
-  }
-  {
-    'match': '\\bnot\\b|¬|\\bor\\b|∨'
-    'name': 'keyword.operator.logical.classicalb'
-  }
-  {
-    'match': '&|∧|(<)=>|⇔|⇒|≠'
-    'name': 'keyword.operator.logical.classicalb'
-  }
-  {
-    'match': '!|#|∀|∃'
-    'name': 'keyword.operator.logical.classicalb'
-  }
-  {
-    'match': '\\bfirst\\b|\\blast\\b|\\btail\\b|\\bfront\\b'
-    'name': 'keyword.operator.sequence.classicalb'
-  }
-  {
-    'match': '\\bmod\\b'
-    'name': 'keyword.operator.numeric.classicalb'
-  }
-  {
-    'match': '\\brec\\b|\\bstruct\\b'
-    'name': 'keyword.operator.record.classicalb'
-  }
-  {
-    'match': '\\bran\\b|\\bdom\\b'
-    'name': 'keyword.operator.relation.classicalb'
-  }
-  {
-    'match': '%|λ'
-    'name': 'keyword.operator.relation.classicalb'
-  }
-  {
-    'match': 'bool'
-    'name': 'keyword.operator.boolean.classicalb'
-  }
-  {
-    'match': '>|<|>=|=<|≤|≥'
-    'name': 'keyword.operator.numeric.classicalb'
-  }
-  {
-    'match': 'GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*'
-    'name': 'keyword.control.definition.classicalb'
-  }
-  {
-    'match': '\\bMININT\\b|\\bMAXINT\\b'
-    'name': 'constant.language.numeric.classicalb'
-  }
-  {
-    'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
-    'name': 'identifier.classicalb'
-  }
+  { 'include': "source.classicalb.rules" }
+  { 'include': '#comments' }
+  { 'include': '#strings' }
+  { 'include': '#components' }
+  { 'include': '#keyword_machineclauses'}
+  { 'include': '#control_blocks'}
+  { 'include': '#keyword_control'}
+  { 'include': '#keyword_operators' }
+  { 'include': '#constant_values' }
+  { 'include': '#preferences' }
+  { 'include': '#identifiers' }
 ]
+
+'repository':
+  'identifiers':
+    'patterns': [
+      {
+        'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
+        'name': 'identifier.classicalb'
+      }
+    ]
+  'comments':
+    'patterns': [
+      {
+        'begin': '/\\*'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.classicalb'
+        'end': '\\*/'
+        'name': 'comment.block.classicalb'
+      }
+      {
+        'begin': '//'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.classicalb'
+        'end': '\n'
+        'name': 'comment.line.classicalb'
+      }
+    ]
+  'strings':
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.classicalb'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.classicalb'
+        'name': 'string.quoted.double.classicalb'
+        'patterns': [
+          {
+            'match': '\\\\.'
+            'name': 'constant.character.escape.classicalb'
+          }
+          {
+            'match': '""'
+            'name': 'constant.character.escape.quote.classicalb'
+          }
+        ]
+      }
+    ]
+  'keyword_machineclauses':
+    'patterns': [
+      {
+        'match': '''(?x)
+          \\b(INITIALIZATION|INITIALISATION|ASSERTIONS|OPERATIONS|SEES|PROMOTES|USES
+          |INCLUDES|IMPORTS|REFINES|EXTENDS|INVARIANT|CONCRETE_VARIABLES
+          |ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS
+          |CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES)\\b
+        '''
+        'name': 'keyword.other.machineclause.classicalb'
+      }
+    ]
+  'keyword_control':
+    'patterns': [
+      {
+        'match': '''(?x)
+          \\b(skip|BE|DO|VARIANT|ELSIF|THEN|ELSE|EITHER|CASE|SELECT
+          |ASSERT|WHEN|WHERE|OR|OF|IN)\\b
+        '''
+        'name': 'keyword.control.classicalb'
+      }
+    ]
+  'keyword_operators':
+    'patterns': [
+        {
+          'match': '\\bnot\\b|¬|\\bor\\b|∨'
+          'name': 'keyword.operator.logical.classicalb'
+        }
+        {
+          'match': '!|#|∀|∃|&|∧|<=>|=>|⇔|⇒'
+          'name': 'keyword.operator.logical.classicalb'
+        }
+        {
+          'match': '≠|/=|=|=='
+          'name': 'keyword.operator.equality.classicalb'
+        }
+        {
+          'match': '\\b(first|last|tail|front)\\b'
+          'name': 'keyword.operator.sequence.classicalb'
+        }
+        {
+          'match': '\\b(mod)\\b'
+          'name': 'keyword.operator.numeric.classicalb'
+        }
+        {
+          'match': '\\b(rec|struct)\\b'
+          'name': 'keyword.operator.record.classicalb'
+        }
+        {
+          'match': '\\b(ran|dom)\\b|%|λ'
+          'name': 'keyword.operator.relation.classicalb'
+        }
+        {
+          'match': 'bool'
+          'name': 'keyword.operator.boolean.classicalb'
+        }
+        {
+          'match': '<--|:=|::' #|=(=)?(>)?
+          'name': 'keyword.operator.assignment.classicalb'
+        }
+        {
+          'match': 'INTER|⋂|UNION|⋃|SIGMA|∑|PI|∏'
+          'name': 'keyword.operator.set.classicalb'
+        }
+        {
+          'match': '\\b(min|max|card|size)\\b'
+          'name': 'keyword.operator.set.classicalb'
+        }
+        {
+          'match': ':|∈|∉|\\\\/|/\\\\|∪|∩|⊄|⊈|⊂|⊆'
+          'name': 'keyword.operator.set.classicalb'
+        }
+        {
+          'match': '-->|-->(>)?|>->(>)?|<->|>\+>(>)?'
+          'name': 'keyword.operator.relation.classicalb'
+        }
+        {
+          'match': '(\\|>(>)?)|((<)?<\\|)|(\\|->)'
+          'name': 'keyword.operator.relation.classicalb'
+        }
+        {
+          'match': '↠|↦|⤀|⤖|⇸|⤔|◀|←|→|↔|↣|▶|⇾|⋖|⊗|◁|▷|⇽'
+          'name': 'keyword.operator.relation.classicalb'
+        }
+        {
+          'match': '\\|\\|'
+          'name': 'keyword.operator.parallel.classicalb'
+        }
+        {
+          'match': '>|<|>=|=<|≤|≥'
+          'name': 'keyword.operator.numeric.classicalb'
+        }
+    ]
+  'constant_values':
+    'patterns': [
+        {
+          'match': "\\b\\d+"
+          'name': 'constant.numeric.classicalb'
+        }
+        {
+          'match': "{}|∅"
+          'name': 'constant.set.classicalb'
+        }
+        {
+          'match': '\\b(TRUE|FALSE)\\b'
+          'name': 'constant.language.other.classicalb'
+        }
+        {
+          'match': '\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?)\\b'
+          'name': 'constant.language.other.classicalb'
+        }
+        {
+          'match': '\\b(MININT|MAXINT)\\b'
+          'name': 'constant.language.numeric.classicalb'
+        }
+      ]
+  'control_blocks':
+    'patterns': [
+        {
+          'begin': '''(?x)
+              \\b(BEGIN|PRE|SELECT|ANY|LET|VAR|ASSERT|WHILE|IF|CHOICE|CASE|EITHER)\\b
+            '''
+          'beginCaptures':
+            '0':
+              'name': 'keyword.control.classicalb'
+          'end': '\\bEND\\b'
+          'endCaptures':
+            '0':
+              'name': 'keyword.control.classicalb'
+          'patterns': [
+            {
+              'match': '\\bINVARIANT\\b'
+              'name': 'keyword.control.classicalb'
+            }
+            { 'include' : "$self" }
+          ]
+        }
+    ]
+  'components':
+    'patterns':[
+      {
+        'begin': '\\b(MACHINE|SYSTEM|MODEL|REFINEMENT)\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.other.machine.classicalb'
+        'end': '\\bEND\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.other.machine.classicalb'
+        'name': 'meta.machine.classicalb'
+        'patterns': [
+          { 'include' : "$self" }
+        ]
+      }
+      {
+        'begin': '\\bIMPLEMENTATION\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.other.implementation.classicalb'
+        'end': '\\bEND\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.other.implementation.classicalb'
+        'name': 'meta.implementation.classicalb'
+        'patterns': [
+          { 'include' : "$self" }
+        ]
+      }
+    ]
+  'preferences':
+    'patterns':[
+        {
+          'match':'''(?x)
+            \\b(GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT
+            |HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*
+            |ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b
+          '''
+          'name': 'keyword.control.definition.classicalb'
+        }
+    ]

@@ -5,25 +5,54 @@
 'name': 'B Rules'
 'scopeName': 'source.classicalb.rules'
 'patterns': [
+  { 'include': '#rules_machine' }
+  { 'include': '#control_blocks' }
   {
-    'begin': '\\bRULES_MACHINE\\b'
-    'beginCaptures':
-      '0':
-        'name': 'storage.type.machine.rules.start.classicalb'
-    'end': '\\bEND\\b'
-    'endCaptures':
-      '0':
-        'name': 'storage.type.machine.rules.end.classicalb'
-    'name': 'meta.machine.classicalb'
-    'patterns': [
-      {
-        'match': '''(?x)
-          \\b(RULE|RULE_SUCCESS|RULE_SUCCESS|RULE_FAIL|RULE_FORALL|FORALL|COUNTEREXAMPLES
-          |EXPECT|RULE_FAIL)\\b
-        '''
-        'name': 'keyword.control.classicalb'
-      }
-      { 'include' : "source.classicalb" }
-    ]
+    'match': '''(?x)
+      \\b(RULE|RULE_SUCCESS|RULE_SUCCESS|RULE_FAIL|RULE_FORALL|COUNTEREXAMPLE
+      |DEPENDS_ON_RULES|EXPECT|RULE_FAIL)\\b
+    '''
+    'name': 'keyword.control.classicalb'
   }
+  { 'include' : "source.classicalb" }
 ]
+'repository':
+  'rules_machine':
+    'patterns':[
+      {
+        'begin': '\\b(RULES_MACHINE|hallo)\\b'
+        'beginCaptures':
+          '0':
+            'name': 'storage.type.machine.rules.start.classicalb'
+        'end': '\\bEND\\b'
+        'endCaptures':
+          '0':
+            'name': 'storage.type.machine.rules.end.classicalb'
+        'name': 'meta.machine.classicalb'
+        'patterns': [
+          { 'include' : "$self" }
+        ]
+      }
+    ]
+  'control_blocks':
+    'patterns': [
+        {
+          'begin': '''(?x)
+              \\b(FORALL|RULE_FORALL)\\b
+            '''
+          'beginCaptures':
+            '0':
+              'name': 'keyword.control.classicalb'
+          'end': '\\bEND\\b'
+          'endCaptures':
+            '0':
+              'name': 'keyword.control.classicalb'
+          'patterns': [
+            {
+              'match': '\\bINVARIANT\\b'
+              'name': 'keyword.control.classicalb'
+            }
+            { 'include' : "$self" }
+          ]
+        }
+    ]

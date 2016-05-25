@@ -1,3 +1,7 @@
+## 0.5.0
+* improved syntax highlighting (pull request by @dohan)
+* additional keywords for rule machines (pull request by @dohan)
+
 ## 0.4.2
 * fix error reporting in case of multiple errors in the same file (pull request by @dohan)
 

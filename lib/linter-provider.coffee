@@ -3,13 +3,13 @@ child_process = require 'child_process'
 
 module.exports = class LinterProvider
   regex_parse_error_pre_151_beta7_format = "! An error occurred !\n! source\\(parse_error\\)\n! \\[(\\d+),(\\d+)\\] (.*) in file: (.*)"
-  regex_parse_error = "! An error occurred !\n! source\\(parse_error\\)\n! (.*)\n\n?! Line: (\\d+) Column: (\\d+) in file: (.*)"
-  regex_parse_error_no_position = "! An error occurred !\n! source\\(parse_error\\)\n! (.*) in file: (.*)"
   regex_type_error_pre_151_beta7_format = "! An error occurred !\n! source\\(type_error\\)\n! (.*)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file .*\n"
-  regex_type_error = "! An error occurred !\n! source\\(type_error\\)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
+  regex_error = "! An error occurred !\n! source\\(([a-zA-Z]|\\d+|_)*\\)\n! (.*)\n! Line: (\\d+) Column: (\\d+) until (\\d+):(\\d+) in file: (.*)"
+  regex_error_old = "! An error occurred !\n! source\\(([a-zA-Z]|\\d+|_)*\\)\n! (.*)\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
+  regex_parse_error_no_position = "! An error occurred !\n! source\\(([a-zA-Z]|\\d+|_)*\\)\n! (.*) in file: (.*)"
 
   getCommand = ->
-    "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 "
+    "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -p show_full_error_span true "
 
   getCommandWithFile = (file) -> "#{getCommand()} #{file} 1>/dev/null"
 
@@ -39,31 +39,6 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_parse_error, "g"); #all matches
-          res_array = line.match regex_all
-          if res_array
-            for res in res_array
-              result = res.match regex_parse_error
-              [message, line, column, file] = result[1..4]
-              toReturn.push(
-                type: "error",
-                text: message,
-                filePath: file.normalize()
-                range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-              )
-
-          regex_all = new RegExp(regex_parse_error_no_position, "g"); #all matches
-          res_array = line.match regex_all
-          if res_array
-            for res in res_array
-              result = res.match regex_parse_error_no_position
-              [message, file] = result[1..2]
-              toReturn.push(
-                type: "error",
-                text: message,
-                filePath: file.normalize()
-              )
-
           regex_all = new RegExp(regex_type_error_pre_151_beta7_format, "g"); #all matches
           res_array = line.match regex_all
           if res_array
@@ -77,16 +52,41 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_type_error, "g"); #all matches
+          regex_all = new RegExp(regex_error, "g"); #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
-              result = res.match regex_type_error
-              [message, line, column, file] = result[1..4]
+              result = res.match regex_error
+              [errorType, message, line1, column1, line2, column2, file] = result[1..7]
               toReturn.push(
                 type: "error",
                 text: message,
                 filePath: file.normalize()
-                range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+                range: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
+              )
+
+          regex_all = new RegExp(regex_error_old, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_error_old
+              [errorType, message, line1, column1, file] = result[1..5]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
+                range: [[line1 - 1, parseInt(column1)], [line1 - 1, parseInt(column1)]]
+              )
+
+          regex_all = new RegExp(regex_parse_error_no_position, "g"); #all matches
+          res_array = line.match regex_all
+          if res_array
+            for res in res_array
+              result = res.match regex_parse_error_no_position
+              [errorType,message, file] = result[1..3]
+              toReturn.push(
+                type: "error",
+                text: message,
+                filePath: file.normalize()
               )
         Resolve toReturn

@@ -1,3 +1,6 @@
+## 0.5.1
+* improved syntax highlighting for newer ProB versions (pull request by @dohan)
+
 ## 0.5.0
 * improved syntax highlighting (pull request by @dohan)
 * additional keywords for rule machines (pull request by @dohan)

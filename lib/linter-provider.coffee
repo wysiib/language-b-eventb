@@ -26,7 +26,7 @@ module.exports = class LinterProvider
         toReturn = []
         for line in data
           console.log "B Linter Provider line: #{line}"
-          regex_all = new RegExp(regex_parse_error_pre_151_beta7_format, "g"); #all matches
+          regex_all = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -39,7 +39,7 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_type_error_pre_151_beta7_format, "g"); #all matches
+          regex_all = new RegExp(regex_type_error_pre_151_beta7_format, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -52,7 +52,7 @@ module.exports = class LinterProvider
                 range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
               )
 
-          regex_all = new RegExp(regex_error, "g"); #all matches
+          regex_all = new RegExp(regex_error, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -65,7 +65,7 @@ module.exports = class LinterProvider
                 range: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
               )
 
-          regex_all = new RegExp(regex_error_old, "g"); #all matches
+          regex_all = new RegExp(regex_error_old, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
@@ -78,12 +78,12 @@ module.exports = class LinterProvider
                 range: [[line1 - 1, parseInt(column1)], [line1 - 1, parseInt(column1)]]
               )
 
-          regex_all = new RegExp(regex_parse_error_no_position, "g"); #all matches
+          regex_all = new RegExp(regex_parse_error_no_position, "g") #all matches
           res_array = line.match regex_all
           if res_array
             for res in res_array
               result = res.match regex_parse_error_no_position
-              [errorType,message, file] = result[1..3]
+              [errorType, message, file] = result[1..3]
               toReturn.push(
                 type: "error",
                 text: message,

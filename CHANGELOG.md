@@ -1,3 +1,13 @@
+## 0.5.1
+* improved syntax highlighting for newer ProB versions (pull request by @dohan)
+
+## 0.5.0
+* improved syntax highlighting (pull request by @dohan)
+* additional keywords for rule machines (pull request by @dohan)
+
+## 0.4.2
+* fix error reporting in case of multiple errors in the same file (pull request by @dohan)
+
 ## 0.4.1
 * fix parsing of type errors
 * improve performance
@@ -7,7 +17,7 @@
 * fix parsing of error messages reported by ProB versions > 1.5.1-beta6
 
 ## 0.3.3
-* fix missing file type for refinements (pull request by dohan)
+* fix missing file type for refinements (pull request by @dohan)
 
 ## 0.3.2
 * add / fix line comments
@@ -30,7 +40,7 @@
 
 ## 0.1.6
 * highlighting for records
-* merge pull requests by dohan:
+* merge pull requests by @dohan:
   * autocomplete for VARIABLES, CONSTANTS and ASSERTIONS clauses
   * several fixes to syntax highlighting
 

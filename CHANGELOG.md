@@ -1,3 +1,6 @@
+## 0.5.2
+* fixed error detection in case of unexpected newlines (pull request by @dohan)
+
 ## 0.5.1
 * improved syntax highlighting for newer ProB versions (pull request by @dohan)
 

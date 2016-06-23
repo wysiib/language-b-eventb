@@ -1,3 +1,6 @@
+## 0.5.3
+* fix broken snippet, fixes preferences view
+
 ## 0.5.2
 * fixed error detection in case of unexpected newlines (pull request by @dohan)
 

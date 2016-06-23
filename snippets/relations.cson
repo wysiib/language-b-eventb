@@ -1,6 +1,6 @@
 '.source.classicalb':
   'Relation <-> ':
-    'prefix': 'relation'| '<->'
+    'prefix': 'relation'
     'body': '<->'
   'Partial Function +->':
     'prefix': 'partialfunction'

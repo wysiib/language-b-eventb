@@ -19,7 +19,7 @@ module.exports = class LinterProvider
       cwd = path.dirname TextEditor.getPath()
       data = []
       console.log "*** Platform: #{navigator.platform} ***"
-      isWin = /^win/.test(navigator.platform);
+      isWin = /^WIN/.test(navigator.platform.toUpperCase());
       nullFile = if isWin then "nul" else "/dev/null"
       command = getCommandWithFile(file, nullFile)
       console.log "Linter Command: #{command}"

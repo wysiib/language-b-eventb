@@ -112,7 +112,11 @@
           'name': 'keyword.operator.sequence.classicalb'
         }
         {
-          'match': '\\b(mod)\\b'
+          'match': '\\b(tree|btree|top|const|rank|father|son|sons|subtree|arity|bin|left|right|sizet|prefix|postfix|mirror|infix)\\b'
+          'name': 'keyword.operator.tree.classicalb'
+        }
+        {
+          'match': '\\b(mod|succ|pred)\\b'
           'name': 'keyword.operator.numeric.classicalb'
         }
         {
@@ -120,7 +124,7 @@
           'name': 'keyword.operator.record.classicalb'
         }
         {
-          'match': '\\b(ran|dom)\\b|%|λ'
+          'match': '\\b(ran|dom|id|prj1|prj2|clousure1|closure|interate|fnc|rel)\\b|%|λ'
           'name': 'keyword.operator.relation.classicalb'
         }
         {

@@ -9,8 +9,8 @@
   { 'include': '#control_blocks' }
   {
     'match': '''(?x)
-      \\b(RULE|RULE_SUCCESS|RULE_SUCCESS|RULE_FAIL|RULE_FORALL|COUNTEREXAMPLE
-      |DEPENDS_ON_RULES|EXPECT|RULE_FAIL)\\b
+      \\b(RULE|RULE_SUCCESS|RULE_SUCCESS|RULE_FAIL|RULE_FORALL|COUNTEREXAMPLE|
+      SUCCEEDED_RULES|FAILED_RULES|DEPENDS_ON_RULES|EXPECT|RULE_FAIL|CONSTANT_DEPENDENCIES)\\b
     '''
     'name': 'keyword.control.classicalb'
   }
@@ -20,7 +20,7 @@
   'rules_machine':
     'patterns':[
       {
-        'begin': '\\b(RULES_MACHINE|hallo)\\b'
+        'begin': '\\b(RULES_MACHINE)\\b'
         'beginCaptures':
           '0':
             'name': 'storage.type.machine.rules.start.classicalb'
@@ -38,7 +38,7 @@
     'patterns': [
         {
           'begin': '''(?x)
-              \\b(FORALL|RULE_FORALL)\\b
+              \\b(FORALL|RULE_FORALL|FOR)\\b
             '''
           'beginCaptures':
             '0':

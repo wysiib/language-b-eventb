@@ -1,3 +1,7 @@
+## 0.6.0
+* windows support (pull request by @dohan)
+* new snippets
+
 ## 0.5.3
 * fix broken snippet, fixes preferences view
 

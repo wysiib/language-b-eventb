@@ -7,6 +7,7 @@
 'scopeName': 'source.classicalb'
 'patterns': [
   { 'include': "source.classicalb.rules" }
+  { 'include': '#pragma' }
   { 'include': '#comments' }
   { 'include': '#strings' }
   { 'include': '#components' }
@@ -25,6 +26,17 @@
     'patterns': [
       {
         'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
+        'name': 'identifier.classicalb'
+      }
+    ]
+  'pragma':
+    'patterns': [
+      {
+        'begin': '/\\*@\\b(package|import|symbolic|unit|label|desc|description|conversion|file)\\b'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.tag.classicalb'
+        'end': '\\*/'
         'name': 'identifier.classicalb'
       }
     ]

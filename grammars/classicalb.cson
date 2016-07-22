@@ -32,7 +32,7 @@
   'pragma':
     'patterns': [
       {
-        'begin': '/\\*@\\b(package|import|symbolic|unit|label|desc|description|conversion|file)\\b'
+        'begin': '/\\*@\\b(package|import-package|import_package|symbolic|unit|label|desc|description|conversion|file)\\b'
         'captures':
           '0':
             'name': 'punctuation.definition.tag.classicalb'

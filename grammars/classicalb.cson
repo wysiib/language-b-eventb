@@ -136,7 +136,7 @@
           'name': 'keyword.operator.record.classicalb'
         }
         {
-          'match': '\\b(ran|dom|id|prj1|prj2|clousure1|closure|interate|fnc|rel)\\b|%|λ'
+          'match': '\\b(ran|dom|id|prj1|prj2|closure1|closure|interate|fnc|rel)\\b|%|λ'
           'name': 'keyword.operator.relation.classicalb'
         }
         {
@@ -148,7 +148,7 @@
           'name': 'keyword.operator.assignment.classicalb'
         }
         {
-          'match': 'INTER|⋂|UNION|⋃|SIGMA|∑|PI|∏'
+          'match': '\\b(INTER|UNION|SIGMA|PI)\\b|⋂|⋃|∑|∏'
           'name': 'keyword.operator.set.classicalb'
         }
         {

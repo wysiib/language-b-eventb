@@ -82,6 +82,14 @@
           }
         ]
       }
+      {
+        'begin': '\'\'\''
+        'captures':
+          '0':
+            'name': 'punctuation.definition.string.begin.classicalb'
+        'end': '\'\'\''
+        'name': 'string.quoted.triple.classicalb'
+      }
     ]
   'machineclauses':
     'patterns': [

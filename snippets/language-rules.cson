@@ -11,3 +11,6 @@
   'RULE_FAIL':
     'prefix': 'rule fail'
     'body': 'RULE_FAIL'
+  'DEPENDS_ON_RULES':
+    'prefix': 'depends on rules'
+    'body': 'DEPENDS_ON_RULES'

@@ -1,16 +1,102 @@
 '.source.classicalb.rules':
   'RULE ... ':
     'prefix': 'rule'
-    'body': 'RULE ${1:name} = \n\tSELECT\n\t${2:guard}\tTHEN ${3:substitution}\nEND'
-  'RULE_FORALL ':
+    'body': '''
+RULE ${1:name}
+RULEID ${2:id1}
+DEPENDS_ON_COMPUTATION compute_y
+DEPENDS_ON_RULE rule1
+BODY
+  substitution
+END
+'''
+  'FOR... ':
+    'prefix': 'for'
+    'body': 'FOR ${1:name} IN ${2:set}\n\tDO \n\t${3:substitution}\n\tEND'
+  'RULE_FORALL':
     'prefix': 'rule forall'
-    'body': 'RULE_FORALL ${1:paramter}\nWHERE ${2:predicate}\nEXPECT ${3:predicate}\nCOUNTEREXAMPLE ${4:string}\nEND'
+    'body':'''
+RULE_FORALL ${1:x}
+WHERE
+  ${2: x : 1..10 }
+EXPECT
+  ${3:x > 0}
+COUNTEREXAMPLE
+  STRING_FORMAT("Value ~w is not greater than zero", x)
+END//RULE_FORALL
+'''
+  'COMPUTATION':
+    'prefix': 'COMPUTATION ...'
+    'body':'''
+COMPUTATION ${1:compute_x}
+DEPENDS_ON_COMPUTATION compute_y
+DEPENDS_ON_RULE rule1
+BODY
+  DEFINE
+    def
+  TYPE
+    POW(INTEGER)
+  VALUE
+    UNION(x).(x : 1..10 | {x + x })
+  END//DEFINE
+END//COMPUTATION
+'''
+  'RULE_ANY':
+    'prefix': 'RULE_ANY'
+    'body':'''
+RULE_ANY
+  x
+WHERE
+  x : 1..10
+  & x : 9..20
+COUNTEREXAMPLE
+  STRING_FORMAT("value ~w", x)
+END//RULE_ANY
+'''
+  'DEFINE':
+    'prefix': 'DEFINE'
+    'body':'''
+DEFINE
+  def
+TYPE
+  POW(INTEGER)
+VALUE
+  UNION(x).(x : 1..10 | {x + x })
+END//DEFINE
+'''
   'RULE_SUCCESS':
     'prefix': 'rule success'
     'body': 'RULE_SUCCESS'
   'RULE_FAIL':
     'prefix': 'rule fail'
     'body': 'RULE_FAIL'
-  'DEPENDS_ON_RULES':
+  'DEPENDS_ON_RULE':
     'prefix': 'depends on rules'
     'body': 'DEPENDS_ON_RULES'
+  'DEPENDS_ON_COMPUTATION':
+    'prefix': 'depends on computation'
+    'body': 'DEPENDS_ON_COMPUTATION'
+  'SUCCEEDED_RULE':
+    'prefix': 'SUCCEEDED_RULE'
+    'body': 'SUCCEEDED_RULES(${1:rule1})'
+  'SUCCEEDED_RULE_ERROR_TYPE':
+    'prefix': 'SUCCEEDED_RULE_ERROR_TYPE'
+    'body': 'SUCCEEDED_RULE_ERROR_TYPE(${1:rule1},${2:2})'
+  'FAILED_RULE':
+    'prefix': 'FAILED_RULE'
+    'body': 'FAILED_RULE(${1:rule1})'
+  'FAILED_RULE_ERROR_TYPE':
+    'prefix': 'FAILED_RULE_ERROR_TYPE'
+    'body': 'FAILED_RULE_ERROR_TYPE(${1:rule1},${2:2})'
+  'NOT_CHECKED_RULE':
+    'prefix': 'NOT_CHECKED_RULE'
+    'body': 'NOT_CHECKED_RULE(${1:rule1})'
+  'DISABLED_RULE':
+    'prefix': 'DISABLED_RULE'
+    'body': 'DISABLED_RULE(${1:rule1})'
+  'REFERENCES':
+    'prefix': 'REFERENCES'
+    'body': 'REFERENCES\n\t${1:otherRulesMachine}'
+  'ACTIVATION':
+    'prefix': 'ACTIVATION'
+    'body': 'ACTIVATION ${1:predicate}'

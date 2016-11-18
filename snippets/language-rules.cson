@@ -1,6 +1,6 @@
 '.source.classicalb.rules':
-  'RULE ... ':
-    'prefix': 'rule'
+  'RULE ...':
+    'prefix': 'RULE ...'
     'body': '''
 RULE ${1:name}
 RULEID ${2:id1}
@@ -65,20 +65,20 @@ VALUE
 END//DEFINE
 '''
   'RULE_SUCCESS':
-    'prefix': 'rule success'
+    'prefix': 'RULE_SUCCESS'
     'body': 'RULE_SUCCESS'
   'RULE_FAIL':
-    'prefix': 'rule fail'
+    'prefix': 'RULE_FAIL'
     'body': 'RULE_FAIL'
   'DEPENDS_ON_RULE':
-    'prefix': 'depends on rules'
-    'body': 'DEPENDS_ON_RULES'
+    'prefix': 'DEPENDS_ON_RULE'
+    'body': 'DEPENDS_ON_RULE ${1:rule}'
   'DEPENDS_ON_COMPUTATION':
-    'prefix': 'depends on computation'
-    'body': 'DEPENDS_ON_COMPUTATION'
+    'prefix': 'DEPENDS_ON_COMPUTATION'
+    'body': 'DEPENDS_ON_COMPUTATION ${1:rule}'
   'SUCCEEDED_RULE':
     'prefix': 'SUCCEEDED_RULE'
-    'body': 'SUCCEEDED_RULES(${1:rule1})'
+    'body': 'SUCCEEDED_RULE(${1:rule1})'
   'SUCCEEDED_RULE_ERROR_TYPE':
     'prefix': 'SUCCEEDED_RULE_ERROR_TYPE'
     'body': 'SUCCEEDED_RULE_ERROR_TYPE(${1:rule1},${2:2})'
@@ -100,3 +100,9 @@ END//DEFINE
   'ACTIVATION':
     'prefix': 'ACTIVATION'
     'body': 'ACTIVATION ${1:predicate}'
+  'ERROR_TYPES':
+    'prefix': 'ERROR_TYPES'
+    'body': 'ERROR_TYPES ${1:2}'
+  'ERROR_TYPE':
+    'prefix': 'ERROR_TYPE'
+    'body': 'ERROR_TYPE ${1:2}'

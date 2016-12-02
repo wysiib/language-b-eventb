@@ -2,17 +2,23 @@
   'RULE ...':
     'prefix': 'RULE ...'
     'body': '''
-RULE ${1:name}
+RULE ${1:RULE_rule1}
 RULEID ${2:id1}
-DEPENDS_ON_COMPUTATION compute_y
-DEPENDS_ON_RULE rule1
+DEPENDS_ON_COMPUTATION COMP_comp
+DEPENDS_ON_RULE RULE_rule2
 BODY
-  substitution
+  skip
 END
 '''
+
   'FOR... ':
-    'prefix': 'for'
-    'body': 'FOR ${1:name} IN ${2:set}\n\tDO \n\t${3:substitution}\n\tEND'
+    'prefix': 'FOR'
+    'body': '''
+FOR ${1:x} IN ${2:S}
+DO ${3:skip}
+END
+'''
+
   'RULE_FORALL':
     'prefix': 'rule forall'
     'body':'''
@@ -25,22 +31,33 @@ COUNTEREXAMPLE
   STRING_FORMAT("Value ~w is not greater than zero", x)
 END//RULE_FORALL
 '''
+
   'COMPUTATION':
     'prefix': 'COMPUTATION ...'
     'body':'''
-COMPUTATION ${1:compute_x}
-DEPENDS_ON_COMPUTATION compute_y
-DEPENDS_ON_RULE rule1
+COMPUTATION ${1:COMP_comp1}
+DEPENDS_ON_COMPUTATION ${2:comp2}
+DEPENDS_ON_RULE ${3:rule}
 BODY
-  DEFINE
-    def
-  TYPE
-    POW(INTEGER)
-  VALUE
-    UNION(x).(x : 1..10 | {x + x })
-  END//DEFINE
+  ${4:define}
 END//COMPUTATION
 '''
+
+  'FUNCTION':
+    'prefix': 'FUNCTION'
+    'body': 'FUNCTION'
+
+  'FUNCTION':
+    'prefix': 'FUNCTION ...'
+    'body':'''
+FUNCTION out <-- FUNC_foo(p)
+PRECONDITION p : S
+DEPENDS_ON_COMPUTATION ${2:COMP_comp1}
+BODY
+  out := p + 1
+END//FUNCTION
+'''
+
   'RULE_ANY':
     'prefix': 'RULE_ANY'
     'body':'''
@@ -54,14 +71,14 @@ COUNTEREXAMPLE
 END//RULE_ANY
 '''
   'DEFINE':
-    'prefix': 'DEFINE'
+    'prefix': 'DEFINE ...'
     'body':'''
 DEFINE
-  def
+  ${1:d}
 TYPE
-  POW(INTEGER)
+  ${2:T}
 VALUE
-  UNION(x).(x : 1..10 | {x + x })
+  ${3:V}
 END//DEFINE
 '''
   'RULE_SUCCESS':
@@ -72,10 +89,10 @@ END//DEFINE
     'body': 'RULE_FAIL'
   'DEPENDS_ON_RULE':
     'prefix': 'DEPENDS_ON_RULE'
-    'body': 'DEPENDS_ON_RULE ${1:rule}'
+    'body': 'DEPENDS_ON_RULE ${1:Rule}'
   'DEPENDS_ON_COMPUTATION':
     'prefix': 'DEPENDS_ON_COMPUTATION'
-    'body': 'DEPENDS_ON_COMPUTATION ${1:rule}'
+    'body': 'DEPENDS_ON_COMPUTATION ${1:Comp}'
   'SUCCEEDED_RULE':
     'prefix': 'SUCCEEDED_RULE'
     'body': 'SUCCEEDED_RULE(${1:rule1})'
@@ -106,3 +123,12 @@ END//DEFINE
   'ERROR_TYPE':
     'prefix': 'ERROR_TYPE'
     'body': 'ERROR_TYPE ${1:2}'
+  'DUMMY_VALUE':
+    'prefix': 'DUMMY_VALUE'
+    'body': 'DUMMY_VALUE ${1:0}'
+  'PRECONDITION':
+    'prefix': 'PRECONDITION'
+    'body': 'PRECONDITION ${1:P}'
+  'BODY':
+    'prefix': 'BODY'
+    'body': 'BODY'

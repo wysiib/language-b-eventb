@@ -4,7 +4,7 @@ child_process = require 'child_process'
 module.exports = class LinterProvider
   regex_parse_error_pre_151_beta7_format = "! An error occurred !\r?\n! source\\(parse_error\\)\r?\n! \\[(\\d+),(\\d+)\\] (.*) in file: (.*)"
   regex_type_error_pre_151_beta7_format = "! An error occurred !\r?\n! source\\(type_error\\)\r?\n! (.*)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file .*\r?\n"
-  regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) until (\\d+):(\\d+) in file: (.*)"
+  regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until (\\d+):(\\d+) in file: (.*)"
   regex_error_old = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
   regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in file: (.*)"
 
@@ -66,7 +66,7 @@ module.exports = class LinterProvider
               type: "error",
               text: message,
               filePath: file.normalize()
-              range: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
+              range: [[line1 - 1 , parseInt(column1)], [line2 - 1, parseInt(column2)]]
             )
 
         regex_all_matches = new RegExp(regex_error_old, "g") #all matches

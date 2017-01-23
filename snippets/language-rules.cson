@@ -20,7 +20,7 @@ END
 '''
 
   'RULE_FORALL':
-    'prefix': 'rule forall'
+    'prefix': 'RULE_FORALL ...'
     'body':'''
 RULE_FORALL ${1:x}
 WHERE
@@ -28,7 +28,10 @@ WHERE
 EXPECT
   ${3:x > 0}
 COUNTEREXAMPLE
-  STRING_FORMAT("Value ~w is not greater than zero", x)
+  STRING_FORMAT(
+    "Value ~w is not greater than zero"
+    , x
+  )
 END//RULE_FORALL
 '''
 
@@ -39,7 +42,7 @@ COMPUTATION ${1:COMP_comp1}
 DEPENDS_ON_COMPUTATION ${2:comp2}
 DEPENDS_ON_RULE ${3:rule}
 BODY
-  ${4:define}
+  ${4:skip}
 END//COMPUTATION
 '''
 

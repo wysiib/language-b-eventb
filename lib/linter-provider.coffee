@@ -42,7 +42,7 @@ module.exports = class LinterProvider
               location: {
                 file: file.normalize(),
                 position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-              }  
+              }
             )
 
         regex_all_matches = new RegExp(regex_type_error_pre_151_beta7_format, "g") #all matches
@@ -57,7 +57,7 @@ module.exports = class LinterProvider
               location: {
                 file: file.normalize(),
                 position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-              }  
+              }
             )
 
         regex_all_matches = new RegExp(regex_error, "g") #all matches
@@ -87,7 +87,7 @@ module.exports = class LinterProvider
               location: {
                 file: file.normalize(),
                 position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-              }  
+              }
             )
 
         regex_all_matches = new RegExp(regex_parse_error_no_position, "g") #all matches
@@ -101,6 +101,6 @@ module.exports = class LinterProvider
               excerpt: message,
               location: {
                 file: file.normalize()
-              }  
+              }
             )
         Resolve toReturn

@@ -1,3 +1,6 @@
+## 0.7.0
+* switch to linter v2
+
 ## 0.6.0
 * windows support (pull request by @dohan)
 * new snippets

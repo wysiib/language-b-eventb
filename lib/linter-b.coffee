@@ -12,5 +12,6 @@ module.exports = LinterB =
       grammarScopes: ['source.classicalb.rules', 'source.classicalb']
       scope: 'file'
       lint: provider.lint
-      lintOnFly: false
+      lintsOnChange: false
+      name: 'ProB'
     }

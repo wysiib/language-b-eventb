@@ -37,10 +37,12 @@ module.exports = class LinterProvider
             result = res.match regex_parse_error_pre_151_beta7_format
             [line, column, message, file] = result[1..4]
             toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              severity: "error",
+              excerpt: message,
+              location: {
+                file: file.normalize(),
+                position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              }  
             )
 
         regex_all_matches = new RegExp(regex_type_error_pre_151_beta7_format, "g") #all matches
@@ -50,10 +52,12 @@ module.exports = class LinterProvider
             result = res.match regex_type_error_pre_151_beta7_format
             [message, file, line, column] = result[1..4]
             toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              severity: "error",
+              excerpt: message,
+              location: {
+                file: file.normalize(),
+                position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              }  
             )
 
         regex_all_matches = new RegExp(regex_error, "g") #all matches
@@ -63,10 +67,12 @@ module.exports = class LinterProvider
             result = res.match regex_error
             [errorType, message, line1, column1, line2, column2, file] = result[1..7]
             toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
+              severity: "error",
+              excerpt: message,
+              location: {
+                file: file.normalize(),
+                position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
+              }
             )
 
         regex_all_matches = new RegExp(regex_error_old, "g") #all matches
@@ -74,12 +80,14 @@ module.exports = class LinterProvider
         if res_array
           for res in res_array
             result = res.match regex_error_old
-            [errorType, message, line1, column1, file] = result[1..5]
+            [errorType, message, line, column, file] = result[1..5]
             toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
-              range: [[line1 - 1, parseInt(column1)], [line1 - 1, parseInt(column1)]]
+              severity: "error",
+              excerpt: message,
+              location: {
+                file: file.normalize(),
+                position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+              }  
             )
 
         regex_all_matches = new RegExp(regex_parse_error_no_position, "g") #all matches
@@ -89,8 +97,10 @@ module.exports = class LinterProvider
             result = res.match regex_parse_error_no_position
             [errorType, message, file] = result[1..3]
             toReturn.push(
-              type: "error",
-              text: message,
-              filePath: file.normalize()
+              severity: "error",
+              excerpt: message,
+              location: {
+                file: file.normalize()
+              }  
             )
         Resolve toReturn

@@ -1,4 +1,7 @@
 '.source.classicalb':
+  'OPERATIONS':
+    'prefix': 'OPERATIONS'
+    'body': 'OPERATIONS'
   'VARIABLES':
     'prefix': 'VARIABLES'
     'body': 'VARIABLES\n\t${1:x}\nINVARIANT\n\t${2:P}\nINITIALISATION\n\t${4:I}'

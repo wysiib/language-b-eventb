@@ -128,7 +128,7 @@
           'name': 'keyword.operator.equality.classicalb'
         }
         {
-          'match': '\\b(first|last|tail|front)\\b'
+          'match': '\\b(first|last|tail|front|rev)\\b'
           'name': 'keyword.operator.sequence.classicalb'
         }
         {

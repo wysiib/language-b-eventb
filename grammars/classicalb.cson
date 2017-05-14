@@ -156,7 +156,7 @@
           'name': 'keyword.operator.assignment.classicalb'
         }
         {
-          'match': '\\b(INTER|UNION|SIGMA|PI|POW|POW1)\\b|⋂|⋃|∑|∏'
+          'match': '\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏'
           'name': 'keyword.operator.set.classicalb'
         }
         {

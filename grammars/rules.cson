@@ -36,7 +36,7 @@
     'match': '''(?x)
       \\b(ERROR_TYPES|RULEID|POSTCONDITION
       |DEPENDS_ON_RULE|DEPENDS_ON_COMPUTATION|ACTIVATION|PRECONDITION|TAGS
-      |BODY)\\b
+      |BODY|REPLACES)\\b
     '''
     'name': 'entity'
   }

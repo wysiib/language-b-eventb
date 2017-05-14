@@ -132,6 +132,9 @@ END//DEFINE
   'PRECONDITION':
     'prefix': 'PRECONDITION'
     'body': 'PRECONDITION ${1:P}'
+  'POSTCONDITION':
+    'prefix': 'POSTCONDITION'
+    'body': 'POSTCONDITION ${1:P}'
   'BODY':
     'prefix': 'BODY'
     'body': 'BODY'

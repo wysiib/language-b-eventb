@@ -19,7 +19,7 @@
   }
   {
     'match': '''(?x)
-      \\b(STRING_FORMAT|TO_STRING|CHOOSE)\\b
+      \\b(STRING_FORMAT|TO_STRING|CHOOSE|CONCAT_STRINGS)\\b
     '''
     'name': 'constants'
   }

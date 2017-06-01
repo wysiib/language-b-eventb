@@ -138,3 +138,6 @@ END//DEFINE
   'BODY':
     'prefix': 'BODY'
     'body': 'BODY'
+  'GET_RULE_COUNTEREXAMPLES':
+    'prefix': 'GET_RULE_COUNTEREXAMPLES'
+    'body': 'GET_RULE_COUNTEREXAMPLES'

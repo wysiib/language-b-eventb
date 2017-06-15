@@ -24,7 +24,7 @@ END
     'body':'''
 RULE_FORALL ${1:x}
 WHERE
-  ${2: x : 1..10 }
+  ${2:x : 1..10 }
 EXPECT
   ${3:x > 0}
 COUNTEREXAMPLE

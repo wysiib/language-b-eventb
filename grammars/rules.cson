@@ -25,7 +25,7 @@
   }
   {
     'match': '''(?x)
-      \\b(RULE_SUCCESS|RULE_FAIL|COUNTEREXAMPLE|EXPECT|TYPE|VALUE|DUMMY_VALUE|ERROR_TYPE
+      \\b(RULE_SUCCESS|COUNTEREXAMPLE|EXPECT|TYPE|VALUE|DUMMY_VALUE|ERROR_TYPE
         |SUCCEEDED_RULE|SUCCEEDED_RULE_ERROR_TYPE|FAILED_RULE|FAILED_RULE_ERROR_TYPE
         |NOT_CHECKED_RULE|DISABLED_RULE|GET_RULE_COUNTEREXAMPLES
         )\\b
@@ -79,7 +79,7 @@
         }
         {
           'begin': '''(?x)
-              \\b(FOR|RULE_FORALL|RULE_ANY|DEFINE)\\b
+              \\b(FOR|RULE_FORALL|RULE_FAIL|DEFINE)\\b
             '''
           'beginCaptures':
             '0':

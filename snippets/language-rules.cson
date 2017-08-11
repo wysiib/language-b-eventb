@@ -61,17 +61,18 @@ BODY
 END//FUNCTION
 '''
 
-  'RULE_ANY':
-    'prefix': 'RULE_ANY'
+  'RULE_FAIL':
+    'prefix': 'RULE_FAIL ...'
     'body':'''
-RULE_ANY
+RULE_FAIL
   x
-WHERE
+WHEN
   x : 1..10
   & x : 9..20
+ERROR_TYPE 1
 COUNTEREXAMPLE
   STRING_FORMAT("value ~w", x)
-END//RULE_ANY
+END
 '''
   'DEFINE':
     'prefix': 'DEFINE ...'
@@ -87,9 +88,6 @@ END//DEFINE
   'RULE_SUCCESS':
     'prefix': 'RULE_SUCCESS'
     'body': 'RULE_SUCCESS'
-  'RULE_FAIL':
-    'prefix': 'RULE_FAIL'
-    'body': 'RULE_FAIL'
   'DEPENDS_ON_RULE':
     'prefix': 'DEPENDS_ON_RULE'
     'body': 'DEPENDS_ON_RULE ${1:Rule}'

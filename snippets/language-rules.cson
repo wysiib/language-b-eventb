@@ -24,7 +24,7 @@ END
     'body':'''
 RULE_FORALL ${1:x}
 WHERE
-  ${2:x : 1..10 }
+  ${2: x : 1..10 }
 EXPECT
   ${3:x > 0}
 COUNTEREXAMPLE
@@ -61,18 +61,17 @@ BODY
 END//FUNCTION
 '''
 
-  'RULE_FAIL':
-    'prefix': 'RULE_FAIL ...'
+  'RULE_ANY':
+    'prefix': 'RULE_ANY'
     'body':'''
-RULE_FAIL
+RULE_ANY
   x
-WHEN
+WHERE
   x : 1..10
   & x : 9..20
-ERROR_TYPE 1
 COUNTEREXAMPLE
   STRING_FORMAT("value ~w", x)
-END
+END//RULE_ANY
 '''
   'DEFINE':
     'prefix': 'DEFINE ...'
@@ -88,6 +87,9 @@ END//DEFINE
   'RULE_SUCCESS':
     'prefix': 'RULE_SUCCESS'
     'body': 'RULE_SUCCESS'
+  'RULE_FAIL':
+    'prefix': 'RULE_FAIL'
+    'body': 'RULE_FAIL'
   'DEPENDS_ON_RULE':
     'prefix': 'DEPENDS_ON_RULE'
     'body': 'DEPENDS_ON_RULE ${1:Rule}'
@@ -139,6 +141,3 @@ END//DEFINE
   'GET_RULE_COUNTEREXAMPLES':
     'prefix': 'GET_RULE_COUNTEREXAMPLES'
     'body': 'GET_RULE_COUNTEREXAMPLES'
-  'REPLACES':
-    'prefix': 'REPLACES'
-    'body': 'REPLACES'

@@ -2,6 +2,7 @@
   'mch'
   'ref'
   'imp'
+  'def'
 ]
 'name': 'Classical B'
 'scopeName': 'source.classicalb'

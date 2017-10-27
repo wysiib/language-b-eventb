@@ -1,3 +1,6 @@
+## 0.7.1
+* fix for newer ProB versions: remove colorized console output before applying regex
+
 ## 0.7.0
 * switch to linter v2
 

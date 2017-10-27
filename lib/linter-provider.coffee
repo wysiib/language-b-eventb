@@ -28,6 +28,7 @@ module.exports = class LinterProvider
       process.on 'close', ->
         toReturn = []
         all = data.join('') #combining all elements of data to one string (this is required because one element does not correspond to one error)
+        all = all.replace(/(\u001B\[\d\d?m)/g,"") #remove escape sequences used for color codes
         console.log "*** B Linter Provider all messages ***\n#{all}\n*** end of messages ***"
 
         regex_all_matches = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches

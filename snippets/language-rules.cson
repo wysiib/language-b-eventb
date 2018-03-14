@@ -4,8 +4,7 @@
     'body': '''
 RULE ${1:RULE_rule1}
 RULEID ${2:id1}
-DEPENDS_ON_COMPUTATION COMP_comp
-DEPENDS_ON_RULE RULE_rule2
+ERROR_TYPES 1
 BODY
   skip
 END
@@ -27,6 +26,7 @@ WHERE
   ${2: x : 1..10 }
 EXPECT
   ${3:x > 0}
+ERROR_TYPE 1
 COUNTEREXAMPLE
   STRING_FORMAT(
     "Value ~w is not greater than zero"
@@ -39,7 +39,6 @@ END//RULE_FORALL
     'prefix': 'COMPUTATION ...'
     'body':'''
 COMPUTATION ${1:COMP_comp1}
-DEPENDS_ON_COMPUTATION ${2:comp2}
 DEPENDS_ON_RULE ${3:rule}
 BODY
   ${4:skip}
@@ -55,23 +54,23 @@ END//COMPUTATION
     'body':'''
 FUNCTION out <-- FUNC_foo(p)
 PRECONDITION p : S
-DEPENDS_ON_COMPUTATION ${2:COMP_comp1}
+POSTCONDITION out : Res
 BODY
   out := p + 1
 END//FUNCTION
 '''
 
-  'RULE_ANY':
-    'prefix': 'RULE_ANY'
+  'RULE_FAIL':
+    'prefix': 'RULE_FAIL...'
     'body':'''
-RULE_ANY
+RULE_FAIL
   x
-WHERE
+WHEN
   x : 1..10
   & x : 9..20
 COUNTEREXAMPLE
   STRING_FORMAT("value ~w", x)
-END//RULE_ANY
+END//RULE_FAIL
 '''
   'DEFINE':
     'prefix': 'DEFINE ...'
@@ -84,12 +83,6 @@ VALUE
   ${3:V}
 END//DEFINE
 '''
-  'RULE_SUCCESS':
-    'prefix': 'RULE_SUCCESS'
-    'body': 'RULE_SUCCESS'
-  'RULE_FAIL':
-    'prefix': 'RULE_FAIL'
-    'body': 'RULE_FAIL'
   'DEPENDS_ON_RULE':
     'prefix': 'DEPENDS_ON_RULE'
     'body': 'DEPENDS_ON_RULE ${1:Rule}'
@@ -108,6 +101,9 @@ END//DEFINE
   'FAILED_RULE_ERROR_TYPE':
     'prefix': 'FAILED_RULE_ERROR_TYPE'
     'body': 'FAILED_RULE_ERROR_TYPE(${1:rule1},${2:2})'
+  'FAILED_RULE_ALL_ERROR_TYPES':
+    'prefix': 'FAILED_RULE_ALL_ERROR_TYPES'
+    'body': 'FAILED_RULE_ALL_ERROR_TYPES(${1:rule1})'
   'NOT_CHECKED_RULE':
     'prefix': 'NOT_CHECKED_RULE'
     'body': 'NOT_CHECKED_RULE(${1:rule1})'

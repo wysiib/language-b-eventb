@@ -1,13 +1,139 @@
 '.source.classicalb.rules':
-  'RULE ... ':
-    'prefix': 'rule'
-    'body': 'RULE ${1:name} = \n\tSELECT\n\t${2:guard}\tTHEN ${3:substitution}\nEND'
-  'RULE_FORALL ':
-    'prefix': 'rule forall'
-    'body': 'RULE_FORALL ${1:paramter}\nWHERE ${2:predicate}\nEXPECT ${3:predicate}\nCOUNTEREXAMPLES ${4:string}\nEND'
-  'RULE_SUCCESS':
-    'prefix': 'rule success'
-    'body': 'RULE_SUCCESS'
+  'RULE ...':
+    'prefix': 'RULE ...'
+    'body': '''
+RULE ${1:RULE_rule1}
+RULEID ${2:id1}
+ERROR_TYPES 1
+BODY
+  skip
+END
+'''
+
+  'FOR... ':
+    'prefix': 'FOR'
+    'body': '''
+FOR ${1:x} IN ${2:S}
+DO ${3:skip}
+END
+'''
+
+  'RULE_FORALL':
+    'prefix': 'RULE_FORALL ...'
+    'body':'''
+RULE_FORALL ${1:x}
+WHERE
+  ${2: x : 1..10 }
+EXPECT
+  ${3:x > 0}
+ERROR_TYPE 1
+COUNTEREXAMPLE
+  STRING_FORMAT(
+    "Value ~w is not greater than zero"
+    , x
+  )
+END//RULE_FORALL
+'''
+
+  'COMPUTATION':
+    'prefix': 'COMPUTATION ...'
+    'body':'''
+COMPUTATION ${1:COMP_comp1}
+DEPENDS_ON_RULE ${3:rule}
+BODY
+  ${4:skip}
+END//COMPUTATION
+'''
+
+  'FUNCTION':
+    'prefix': 'FUNCTION'
+    'body': 'FUNCTION'
+
+  'FUNCTION':
+    'prefix': 'FUNCTION ...'
+    'body':'''
+FUNCTION out <-- FUNC_foo(p)
+PRECONDITION p : S
+POSTCONDITION out : Res
+BODY
+  out := p + 1
+END//FUNCTION
+'''
+
   'RULE_FAIL':
-    'prefix': 'rule fail'
-    'body': 'RULE_FAIL'
+    'prefix': 'RULE_FAIL...'
+    'body':'''
+RULE_FAIL
+  x
+WHEN
+  x : 1..10
+  & x : 9..20
+COUNTEREXAMPLE
+  STRING_FORMAT("value ~w", x)
+END//RULE_FAIL
+'''
+  'DEFINE':
+    'prefix': 'DEFINE ...'
+    'body':'''
+DEFINE
+  ${1:d}
+TYPE
+  ${2:T}
+VALUE
+  ${3:V}
+END//DEFINE
+'''
+  'DEPENDS_ON_RULE':
+    'prefix': 'DEPENDS_ON_RULE'
+    'body': 'DEPENDS_ON_RULE ${1:Rule}'
+  'DEPENDS_ON_COMPUTATION':
+    'prefix': 'DEPENDS_ON_COMPUTATION'
+    'body': 'DEPENDS_ON_COMPUTATION ${1:Comp}'
+  'SUCCEEDED_RULE':
+    'prefix': 'SUCCEEDED_RULE'
+    'body': 'SUCCEEDED_RULE(${1:rule1})'
+  'SUCCEEDED_RULE_ERROR_TYPE':
+    'prefix': 'SUCCEEDED_RULE_ERROR_TYPE'
+    'body': 'SUCCEEDED_RULE_ERROR_TYPE(${1:rule1},${2:2})'
+  'FAILED_RULE':
+    'prefix': 'FAILED_RULE'
+    'body': 'FAILED_RULE(${1:rule1})'
+  'FAILED_RULE_ERROR_TYPE':
+    'prefix': 'FAILED_RULE_ERROR_TYPE'
+    'body': 'FAILED_RULE_ERROR_TYPE(${1:rule1},${2:2})'
+  'FAILED_RULE_ALL_ERROR_TYPES':
+    'prefix': 'FAILED_RULE_ALL_ERROR_TYPES'
+    'body': 'FAILED_RULE_ALL_ERROR_TYPES(${1:rule1})'
+  'NOT_CHECKED_RULE':
+    'prefix': 'NOT_CHECKED_RULE'
+    'body': 'NOT_CHECKED_RULE(${1:rule1})'
+  'DISABLED_RULE':
+    'prefix': 'DISABLED_RULE'
+    'body': 'DISABLED_RULE(${1:rule1})'
+  'REFERENCES':
+    'prefix': 'REFERENCES'
+    'body': 'REFERENCES\n\t${1:otherRulesMachine}'
+  'ACTIVATION':
+    'prefix': 'ACTIVATION'
+    'body': 'ACTIVATION ${1:predicate}'
+  'ERROR_TYPES':
+    'prefix': 'ERROR_TYPES'
+    'body': 'ERROR_TYPES ${1:2}'
+  'ERROR_TYPE':
+    'prefix': 'ERROR_TYPE'
+    'body': 'ERROR_TYPE ${1:2}'
+  'DUMMY_VALUE':
+    'prefix': 'DUMMY_VALUE'
+    'body': 'DUMMY_VALUE ${1:0}'
+  'PRECONDITION':
+    'prefix': 'PRECONDITION'
+    'body': 'PRECONDITION ${1:P}'
+  'POSTCONDITION':
+    'prefix': 'POSTCONDITION'
+    'body': 'POSTCONDITION ${1:P}'
+  'BODY':
+    'prefix': 'BODY'
+    'body': 'BODY'
+  'GET_RULE_COUNTEREXAMPLES':
+    'prefix': 'GET_RULE_COUNTEREXAMPLES'
+    'body': 'GET_RULE_COUNTEREXAMPLES'

@@ -2,11 +2,13 @@
   'mch'
   'ref'
   'imp'
+  'def'
 ]
 'name': 'Classical B'
 'scopeName': 'source.classicalb'
 'patterns': [
   { 'include': "source.classicalb.rules" }
+  { 'include': '#pragma' }
   { 'include': '#comments' }
   { 'include': '#strings' }
   { 'include': '#components' }
@@ -25,6 +27,17 @@
     'patterns': [
       {
         'match': '\\b[a-zA-Z][a-zA-Z0-9_]*\\b'
+        'name': 'identifier.classicalb'
+      }
+    ]
+  'pragma':
+    'patterns': [
+      {
+        'begin': '/\\*@\\b(package|import-package|import_package|symbolic|unit|label|desc|description|conversion|file)\\b'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.tag.classicalb'
+        'end': '\\*/'
         'name': 'identifier.classicalb'
       }
     ]
@@ -70,6 +83,14 @@
           }
         ]
       }
+      {
+        'begin': '\'\'\''
+        'captures':
+          '0':
+            'name': 'punctuation.definition.string.begin.classicalb'
+        'end': '\'\'\''
+        'name': 'string.quoted.triple.classicalb'
+      }
     ]
   'machineclauses':
     'patterns': [
@@ -108,7 +129,7 @@
           'name': 'keyword.operator.equality.classicalb'
         }
         {
-          'match': '\\b(first|last|tail|front)\\b'
+          'match': '\\b(first|last|tail|front|rev)\\b'
           'name': 'keyword.operator.sequence.classicalb'
         }
         {
@@ -124,7 +145,7 @@
           'name': 'keyword.operator.record.classicalb'
         }
         {
-          'match': '\\b(ran|dom|id|prj1|prj2|clousure1|closure|interate|fnc|rel)\\b|%|λ'
+          'match': '\\b(ran|dom|id|prj1|prj2|closure1|closure|interate|fnc|rel)\\b|%|λ'
           'name': 'keyword.operator.relation.classicalb'
         }
         {
@@ -136,7 +157,7 @@
           'name': 'keyword.operator.assignment.classicalb'
         }
         {
-          'match': 'INTER|⋂|UNION|⋃|SIGMA|∑|PI|∏'
+          'match': '\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏'
           'name': 'keyword.operator.set.classicalb'
         }
         {

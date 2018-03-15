@@ -1,6 +1,6 @@
 {
   "name": "language-b-eventb",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "activationCommands": [],
   "main": "./lib/linter-b",
   "description": "B and Event-B language support in Atom",

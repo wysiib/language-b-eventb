@@ -1,3 +1,6 @@
+## 0.8.0
+* update rules grammar and snippets
+
 ## 0.7.1
 * fix for newer ProB versions: remove colorized console output before applying regex
 

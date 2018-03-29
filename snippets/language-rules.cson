@@ -45,11 +45,11 @@ BODY
 END//COMPUTATION
 '''
 
-  'FUNCTION':
+  'FUNCTION Keyword':
     'prefix': 'FUNCTION'
     'body': 'FUNCTION'
 
-  'FUNCTION':
+  'FUNCTION Template':
     'prefix': 'FUNCTION ...'
     'body':'''
 FUNCTION out <-- FUNC_foo(p)

@@ -80,9 +80,6 @@
   'B: >+>':
     'prefix': 'funcPartialInjection'
     'body': '+->>'
-  'B: >+>':
-    'prefix': 'funcPartialSurjection'
-    'body': '+->>'
   'B: >+>>':
     'prefix': 'funcBijection'
     'body': '>+>>'

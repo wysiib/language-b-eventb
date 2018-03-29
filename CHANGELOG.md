@@ -1,4 +1,4 @@
-## 0.8.1
+## 0.8.2
 * remove duplicate keys for snippets
 
 ## 0.8.0

@@ -2,7 +2,7 @@
   'RULE ...':
     'prefix': 'RULE ...'
     'body': '''
-RULE ${1:RULE_rule1}
+RULE ${1:RULE_Rule1}
 RULEID ${2:id1}
 ERROR_TYPES 1
 BODY
@@ -137,3 +137,6 @@ END//DEFINE
   'GET_RULE_COUNTEREXAMPLES':
     'prefix': 'GET_RULE_COUNTEREXAMPLES'
     'body': 'GET_RULE_COUNTEREXAMPLES'
+  'REPLACES...':
+    'prefix': 'REPLACES'
+    'body': 'REPLACES ${1:COMP}'

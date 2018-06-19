@@ -6,6 +6,8 @@ module.exports = class LinterProvider
   regex_type_error_pre_151_beta7_format = "! An error occurred !\r?\n! source\\(type_error\\)\r?\n! (.*)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file .*\r?\n"
   regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until (\\d+):(\\d+) in file: (.*)"
   regex_error_old = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
+  regex_error_181 = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (.*)"
+  regex_warning_181 = "! A warning occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (.*)"
   regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in file: (.*)"
 
   getCommand = ->
@@ -31,6 +33,36 @@ module.exports = class LinterProvider
         all = all.replace(/(\u001B\[\d\d?m)/g, "") #remove escape sequences used for color codes
         console.log "*** B Linter Provider all messages ***\n#{all}\n*** end of messages ***"
 
+        regex_all_matches = new RegExp(regex_error_181, "g") #all matches
+        res_array = all.match regex_all_matches
+        if res_array
+          for res in res_array
+            result = res.match regex_error_181
+            [errorType, message, line1, column1, line2, column2, file] = result[1..7]
+            toReturn.push(
+              severity: "error",
+              excerpt: message,
+              location: {
+                file: file.normalize(),
+                position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
+              }
+            )
+        
+        regex_all_matches = new RegExp(regex_warning_181, "g") #all matches
+        res_array = all.match regex_all_matches
+        if res_array
+          for res in res_array
+            result = res.match regex_warning_181
+            [errorType, message, line1, column1, line2, column2, file] = result[1..7]
+            toReturn.push(
+              severity: "warning",
+              excerpt: message,
+              location: {
+                file: file.normalize(),
+                position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
+              }
+            )
+        
         regex_all_matches = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches
         res_array = all.match regex_all_matches
         if res_array

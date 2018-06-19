@@ -1,5 +1,6 @@
 ## 0.8.3
 * support new ProB error message format (version 1.8.1)
+
 ## 0.8.2
 * remove duplicate keys for snippets
 

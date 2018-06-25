@@ -17,6 +17,7 @@ module.exports = class LinterProvider
 
   lint: (TextEditor) ->
     new Promise (Resolve) ->
+      loadedFile = path.basename TextEditor.getPath()
       file = path.basename TextEditor.getPath()
       cwd = path.dirname TextEditor.getPath()
       data = []
@@ -46,6 +47,7 @@ module.exports = class LinterProvider
                 file: file.normalize(),
                 position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
               }
+              linterName: "ProB on " + loadedFile.normalize()
             )
         
         regex_all_matches = new RegExp(regex_warning_181, "g") #all matches
@@ -61,6 +63,7 @@ module.exports = class LinterProvider
                 file: file.normalize(),
                 position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
               }
+              linterName: "ProB on " + loadedFile.normalize()
             )
         
         regex_all_matches = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches

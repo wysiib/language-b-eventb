@@ -1,7 +1,29 @@
 '.source.classicalb':
-  'OPERATIONS':
+  'MACHINE':
+      'prefix': 'MACHINE ...'
+      'body':'''
+MACHINE ${1:MyMachine}
+CONSTANTS ${2:c}
+PROPERTIES ${3:c : 1..10 }
+VARIABLES ${4:x}
+INVARIANT ${5:x : 1..c}
+INITIALISATION ${6:x := 1}
+OPERATIONS 
+  Inc = SELECT x < c THEN x := x + 1 END
+END//MACHINE
+'''
+  'package pragma':
+    'prefix': 'package'
+    'body': '/*@package ${1:foo.bar} */'
+  'import-package pragma':
+    'prefix': 'import-package'
+    'body': '/*@import-package ${1:foo.bazz} */'
+  'OPERATIONS Keyword':
     'prefix': 'OPERATIONS'
     'body': 'OPERATIONS'
+  'DEFINITIONS Keyword':
+    'prefix': 'DEFINITIONS'
+    'body': 'DEFINITIONS'
   'VARIABLES':
     'prefix': 'VARIABLES'
     'body': 'VARIABLES\n\t${1:x}\nINVARIANT\n\t${2:P}\nINITIALISATION\n\t${4:I}'

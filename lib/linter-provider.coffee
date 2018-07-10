@@ -6,8 +6,8 @@ module.exports = class LinterProvider
   regex_type_error_pre_151_beta7_format = "! An error occurred !\r?\n! source\\(type_error\\)\r?\n! (.*)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file .*\r?\n"
   regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until (\\d+):(\\d+) in file: (.*)"
   regex_error_old = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
-  regex_error_181 = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (.*)"
-  regex_warning_181 = "! A warning occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (.*)"
+  regex_error_181 = "! An error occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (.*)"
+  regex_warning_181 = "! A warning occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (.*)"
   regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in file: (.*)"
 
   getCommand = ->

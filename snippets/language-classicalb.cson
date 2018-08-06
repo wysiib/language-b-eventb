@@ -36,8 +36,8 @@ END//MACHINE
   'WHILE':
     'prefix': 'while'
     'body': 'WHILE ${1:p}\nDO\n\t${2:G}\nINVARIANT ${3:Q}\nVARIANT ${4:E}\nEND'
-  'PRE':
-    'prefix': 'pre'
+  'PRE Template':
+    'prefix': 'PRE'
     'body': 'PRE ${1:p}\nTHEN\n\t${2:G}\nEND'
   'VAR':
     'prefix': 'var'

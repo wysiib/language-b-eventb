@@ -129,7 +129,7 @@
           'name': 'keyword.operator.equality.classicalb'
         }
         {
-          'match': '\\b(first|last|tail|front|rev|seq|seq1)\\b'
+          'match': '\\b(first|last|tail|front|rev|seq|seq1|conc)\\b'
           'name': 'keyword.operator.sequence.classicalb'
         }
         {

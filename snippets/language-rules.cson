@@ -1,4 +1,8 @@
 '.source.classicalb.rules':
+  'RULES_MACHINE Keyword':
+    'prefix': 'RULES_MACHINE'
+    'body': 'RULES_MACHINE'
+    
   'RULE ...':
     'prefix': 'RULE ...'
     'body': '''

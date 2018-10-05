@@ -1,3 +1,6 @@
+## 0.9.0
+* support changed output format of ProB 1.8.3
+
 ## 0.8.3
 * support new ProB error message format (version 1.8.1)
 

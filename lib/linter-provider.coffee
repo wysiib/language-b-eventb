@@ -11,7 +11,7 @@ module.exports = class LinterProvider
   regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in file: (.*)"
 
   getCommand = ->
-    "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 "
+    "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version"
 
   getCommandWithFile = (file, nullFile) -> "#{getCommand()} #{file} 1>#{nullFile}"
 

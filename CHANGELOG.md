@@ -1,3 +1,7 @@
+## 0.10.0
+* improved call to ProB binary (thanks @leuschel)
+* improved some regular expressions used to capture errors (thanks @leuschel)
+
 ## 0.9.0
 * support changed output format of ProB 1.8.3
 

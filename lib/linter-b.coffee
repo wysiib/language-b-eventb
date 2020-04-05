@@ -5,6 +5,11 @@ module.exports = LinterB =
       description: 'The path to probcli'
       type: 'string'
       default: 'probcli'
+    probCheckWD:
+      title: 'Check Well-Definedness POs'
+      type: 'boolean'
+      description: 'Generate WD (Well-Definedness) POs (Proof Obligations) and try and discharge them'
+      default: false
   provideLinter: ->
     LinterProvider = require './linter-provider'
     provider = new LinterProvider()

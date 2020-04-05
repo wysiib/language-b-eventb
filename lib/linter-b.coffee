@@ -10,6 +10,11 @@ module.exports = LinterB =
       type: 'boolean'
       description: 'Generate WD (Well-Definedness) POs (Proof Obligations) and try and discharge them'
       default: false
+    probStricterStaticChecks:
+      title: 'Stricter Static Checks'
+      type: 'boolean'
+      description: 'Type check DEFINITIONS and stricter clash warnings'
+      default: true
   provideLinter: ->
     LinterProvider = require './linter-provider'
     provider = new LinterProvider()

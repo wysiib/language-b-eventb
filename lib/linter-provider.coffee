@@ -12,15 +12,14 @@ module.exports = class LinterProvider
 
   getCommand = ->
     if (atom.config.get('language-b-eventb.probCheckWD'))
-      if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -version -wd-check"
-      else
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version -wd-check"
+      wdcmd = " -wd-check"
     else
-      if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -version"
-      else
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version"
+      wdcmd = ""
+    if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
+      opts = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE"
+    else
+      opts = ""
+    "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version" + opts + wdcmd
 
   getCommandWithFile = (file, nullFile) -> "#{getCommand()} #{file} 1>#{nullFile}"
 

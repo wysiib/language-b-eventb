@@ -12,7 +12,7 @@ module.exports = class LinterProvider
 
   getCommand = ->
     if (atom.config.get('language-b-eventb.probCheckWD'))
-      wdcmd = " -wd-check"
+      wdcmd = " -wd-check -release_java_parser"
     else
       wdcmd = ""
     if (atom.config.get('language-b-eventb.probStricterStaticChecks'))

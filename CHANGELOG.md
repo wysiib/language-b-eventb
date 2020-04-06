@@ -1,3 +1,6 @@
+## 0.11.0
+* improve reporting of WD issues (thanks @leuschel)
+
 ## 0.10.0
 * improved call to ProB binary (thanks @leuschel)
 * improved some regular expressions used to capture errors (thanks @leuschel)

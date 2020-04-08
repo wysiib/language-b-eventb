@@ -2,25 +2,23 @@ path = require 'path'
 child_process = require 'child_process'
 
 module.exports = class LinterProvider
-  regex_parse_error_pre_151_beta7_format = "! An error occurred !\r?\n! source\\(parse_error\\)\r?\n! \\[(\\d+),(\\d+)\\] (.*) in file: (.*)"
-  regex_type_error_pre_151_beta7_format = "! An error occurred !\r?\n! source\\(type_error\\)\r?\n! (.*)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file .*\r?\n"
   regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until (\\d+):(\\d+) in file: (.*)"
   regex_error_old = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
-  regex_error_181 = "! An error occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*).*"
-  regex_warning_181 = "! A warning occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*).*"
+  regex_error_181 = "! An error occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*).*"
+  regex_warning_181 = "! A warning occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*).*"
+  regex_message_181 = ".*! Message \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*).*"
   regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in file: (.*)"
 
   getCommand = ->
     if (atom.config.get('language-b-eventb.probCheckWD'))
-      if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -version -wd-check"
-      else
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version -wd-check"
+      wdcmd = " -wd-check -release_java_parser"
     else
-      if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -version"
-      else
-        "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version"
+      wdcmd = ""
+    if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
+      opts = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE"
+    else
+      opts = ""
+    "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version" + opts + wdcmd
 
   getCommandWithFile = (file, nullFile) -> "#{getCommand()} #{file} 1>#{nullFile}"
 
@@ -52,6 +50,7 @@ module.exports = class LinterProvider
 
         regex_all_matches = new RegExp(regex_error_181, "g") #all matches
         res_array = all_stderr.match regex_all_matches
+        console.log "res_array 181 errors: #{res_array}"
         if res_array
           for res in res_array
             result = res.match regex_error_181
@@ -68,6 +67,7 @@ module.exports = class LinterProvider
         
         regex_all_matches = new RegExp(regex_warning_181, "g") #all matches
         res_array = all_stderr.match regex_all_matches
+        console.log "res_array 181 warnings: #{res_array}"
         if res_array
           for res in res_array
             result = res.match regex_warning_181
@@ -81,35 +81,22 @@ module.exports = class LinterProvider
               }
               linterName: "ProB on " + loadedFile.normalize()
             )
-        
-        regex_all_matches = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches
+            
+        regex_all_matches = new RegExp(regex_message_181, "g") #all matches
         res_array = all_stderr.match regex_all_matches
+        console.log "res_array 181 messages: #{res_array}"
         if res_array
           for res in res_array
-            result = res.match regex_parse_error_pre_151_beta7_format
-            [line, column, message, file] = result[1..4]
+            result = res.match regex_message_181
+            [errorType, message, line1, column1, line2, column2, file] = result[1..7]
             toReturn.push(
-              severity: "error",
+              severity: "info",
               excerpt: message,
               location: {
                 file: file.normalize(),
-                position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
+                position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]
               }
-            )
-
-        regex_all_matches = new RegExp(regex_type_error_pre_151_beta7_format, "g") #all matches
-        res_array = all_stderr.match regex_all_matches
-        if res_array
-          for res in res_array
-            result = res.match regex_type_error_pre_151_beta7_format
-            [message, file, line, column] = result[1..4]
-            toReturn.push(
-              severity: "error",
-              excerpt: message,
-              location: {
-                file: file.normalize(),
-                position: [[line - 1, parseInt(column)], [line - 1, parseInt(column)]]
-              }
+              linterName: "ProB on " + loadedFile.normalize()
             )
 
         regex_all_matches = new RegExp(regex_error, "g") #all matches

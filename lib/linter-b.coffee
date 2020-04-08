@@ -8,7 +8,7 @@ module.exports = LinterB =
     probCheckWD:
       title: 'Check Well-Definedness POs'
       type: 'boolean'
-      description: 'Generate WD (Well-Definedness) POs (Proof Obligations) and try and discharge them'
+      description: 'Generate WD (Well-Definedness) POs (Proof Obligations) and try and discharge them (requires probcli 1.10.0-nightly or newer)'
       default: false
     probStricterStaticChecks:
       title: 'Stricter Static Checks'

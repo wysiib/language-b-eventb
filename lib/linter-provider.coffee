@@ -29,22 +29,29 @@ module.exports = class LinterProvider
       loadedFile = path.basename TextEditor.getPath()
       file = path.basename TextEditor.getPath()
       cwd = path.dirname TextEditor.getPath()
-      data = []
+      data_stderr = []
+      data_stdout = []
       console.log "*** Platform: #{navigator.platform} ***"
       isWin = /^WIN/.test(navigator.platform.toUpperCase())
       nullFile = if isWin then "nul" else "/dev/null"
       command = getCommandWithFile(file, nullFile)
       console.log "Linter Command: #{command}"
       process = child_process.exec command, {cwd: cwd}
-      process.stderr.on 'data', (d) -> data.push d.toString()
+      process.stderr.on 'data', (d) -> data_stderr.push d.toString()
+      process.stdout.on 'data', (d) -> data_stderr.push d.toString()
       process.on 'close', ->
         toReturn = []
-        all = data.join('') #combining all elements of data to one string (this is required because one element does not correspond to one error)
-        all = all.replace(/(\u001B\[\d\d?m)/g, "") #remove escape sequences used for color codes
-        console.log "*** B Linter Provider all messages ***\n#{all}\n*** end of messages ***"
+
+        all_stderr = data_stderr.join('') #combining all elements of data to one string (this is required because one element does not correspond to one error)
+        all_stderr = all_stderr.replace(/(\u001B\[\d\d?m)/g, "") #remove escape sequences used for color codes
+        console.log "*** B Linter Provider all messages on stderr ***\n#{all_stderr}\n*** end of messages ***"
+
+        all_stdout = data_stdout.join('') #combining all elements of data to one string (this is required because one element does not correspond to one error)
+        all_stdout = all_stdout.replace(/(\u001B\[\d\d?m)/g, "") #remove escape sequences used for color codes
+        console.log "*** B Linter Provider all messages on stdout ***\n#{all_stdout}\n*** end of messages ***"
 
         regex_all_matches = new RegExp(regex_error_181, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_error_181
@@ -60,7 +67,7 @@ module.exports = class LinterProvider
             )
         
         regex_all_matches = new RegExp(regex_warning_181, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_warning_181
@@ -76,7 +83,7 @@ module.exports = class LinterProvider
             )
         
         regex_all_matches = new RegExp(regex_parse_error_pre_151_beta7_format, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_parse_error_pre_151_beta7_format
@@ -91,7 +98,7 @@ module.exports = class LinterProvider
             )
 
         regex_all_matches = new RegExp(regex_type_error_pre_151_beta7_format, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_type_error_pre_151_beta7_format
@@ -106,7 +113,7 @@ module.exports = class LinterProvider
             )
 
         regex_all_matches = new RegExp(regex_error, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_error
@@ -121,7 +128,7 @@ module.exports = class LinterProvider
             )
 
         regex_all_matches = new RegExp(regex_error_old, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_error_old
@@ -136,7 +143,7 @@ module.exports = class LinterProvider
             )
 
         regex_all_matches = new RegExp(regex_parse_error_no_position, "g") #all matches
-        res_array = all.match regex_all_matches
+        res_array = all_stderr.match regex_all_matches
         if res_array
           for res in res_array
             result = res.match regex_parse_error_no_position

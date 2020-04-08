@@ -20,7 +20,7 @@ module.exports = class LinterProvider
       opts = ""
     "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version" + opts + wdcmd
 
-  getCommandWithFile = (file, nullFile) -> "#{getCommand()} #{file} 1>#{nullFile}"
+  getCommandWithFile = (file, nullFile) -> "#{getCommand()} #{file}"
 
   lint: (TextEditor) ->
     new Promise (Resolve) ->
@@ -36,7 +36,7 @@ module.exports = class LinterProvider
       console.log "Linter Command: #{command}"
       process = child_process.exec command, {cwd: cwd}
       process.stderr.on 'data', (d) -> data_stderr.push d.toString()
-      process.stdout.on 'data', (d) -> data_stderr.push d.toString()
+      process.stdout.on 'data', (d) -> data_stdout.push d.toString()
       process.on 'close', ->
         toReturn = []
 

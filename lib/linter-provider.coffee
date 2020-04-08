@@ -83,7 +83,7 @@ module.exports = class LinterProvider
             )
             
         regex_all_matches = new RegExp(regex_message_181, "g") #all matches
-        res_array = all_stderr.match regex_all_matches
+        res_array = all_stdout.match regex_all_matches
         console.log "res_array 181 messages: #{res_array}"
         if res_array
           for res in res_array

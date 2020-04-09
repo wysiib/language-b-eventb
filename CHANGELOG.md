@@ -1,3 +1,6 @@
+## 0.12.0
+* report additional issues (needs newer ProB release) (thanks @leuschel)
+
 ## 0.11.0
 * improve reporting of WD issues (thanks @leuschel)
 

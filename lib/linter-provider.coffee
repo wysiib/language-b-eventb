@@ -93,7 +93,7 @@ module.exports = class LinterProvider
             console.log "def = " + defname
             toReturn.push(
               severity: "info",
-              excerpt: "Subsidiary error/warning location caused within " + defname,
+              excerpt: "Subsidiary error/warnings caused within " + defname,
               location: {
                 file: file.normalize(),
                 position: [[line1 - 1, parseInt(column1)], [line2 - 1, parseInt(column2)]]

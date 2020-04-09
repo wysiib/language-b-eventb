@@ -13,7 +13,7 @@ module.exports = LinterB =
     probStricterStaticChecks:
       title: 'Stricter Static Checks'
       type: 'boolean'
-      description: 'Type check DEFINITIONS and stricter clash warnings'
+      description: 'Type check DEFINITIONS, stricter clash warnings, ...'
       default: true
   provideLinter: ->
     LinterProvider = require './linter-provider'

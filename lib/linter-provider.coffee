@@ -16,7 +16,7 @@ module.exports = class LinterProvider
     else
       wdcmd = ""
     if (atom.config.get('language-b-eventb.probStricterStaticChecks'))
-      opts = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE"
+      opts = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint"
     else
       opts = ""
     "#{atom.config.get 'language-b-eventb.probcliPath'} -p MAX_INITIALISATIONS 0 -version" + opts + wdcmd

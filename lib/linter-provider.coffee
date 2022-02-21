@@ -2,13 +2,13 @@ path = require 'path'
 child_process = require 'child_process'
 
 module.exports = class LinterProvider
-  regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (-?\\d+) until (\\d+):(\\d+) in file: (.*)"
-  regex_error_old = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! Line: (\\d+) Column: (\\d+) in file: (.*)"
-  regex_error_181 = "! An error occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*)"
-  regex_warning_181 = "! A warning occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*)"
-  regex_definition = "within DEFINITION call of (([a-zA-Z]|\\d+|_)*) at Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*)"
-  regex_message_181 = ".*! Message \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! Line: (\\d+) Column: (-?\\d+) until Line: (\\d+) Column: (\\d+) in file: (\\S*).*"
-  regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in file: (.*)"
+  regex_error = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! [lL]ine: (\\d+) [cC]olumn: (-?\\d+) until (\\d+):(\\d+) in [fF]ile: (.*)"
+  regex_error_old = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*)\r?\n! [lL]ine: (\\d+) [cC]olumn: (\\d+) in [fF]ile: (.*)"
+  regex_error_181 = "! An error occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! [lL]ine: (\\d+) [cC]olumn: (-?\\d+) until [lL]ine: (\\d+) [cC]olumn: (\\d+) in [fF]ile: (\\S*)"
+  regex_warning_181 = "! A warning occurred \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! [lL]ine: (\\d+) [cC]olumn: (-?\\d+) until [lL]ine: (\\d+) [cC]olumn: (\\d+) in [fF]ile: (\\S*)"
+  regex_definition = "within DEFINITION call of (([a-zA-Z]|\\d+|_)*) at [lL]ine: (\\d+) [cC]olumn: (-?\\d+) until [lL]ine: (\\d+) [cC]olumn: (\\d+) in [fF]ile: (\\S*)"
+  regex_message_181 = ".*! Message \\(source: ([a-zA-Z]|\\d+|_)*\\).*\r?\n! (.*)\r?\n.*\r?\n?! [lL]ine: (\\d+) [cC]olumn: (-?\\d+) until [lL]ine: (\\d+) [cC]olumn: (\\d+) in [fF]ile: (\\S*).*"
+  regex_parse_error_no_position = "! An error occurred !\r?\n! source\\(([a-zA-Z]|\\d+|_)*\\)\r?\n! (.*) in [fF]ile: (.*)"
 
   getCommand = ->
     if (atom.config.get('language-b-eventb.probCheckWD'))

@@ -1,3 +1,6 @@
+## 0.13.0
+* support new ProB error message formats (thanks @leuschel)
+
 ## 0.12.0
 * report additional issues (needs newer ProB release) (thanks @leuschel)
 

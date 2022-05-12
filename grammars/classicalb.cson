@@ -217,7 +217,7 @@
           'name': 'constant.language.boolean.classicalb'
         }
         {
-          'match': '\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT)\\b'
+          'match': '\\b(BOOL|REAL|FLOAT|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT)\\b'
           'name': 'constant.other.sets.classicalb'
         }
       ]
@@ -264,7 +264,8 @@
     'patterns':[
         {
           'match':'''(?x)
-            \\b(GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT
+            \\b(GOAL|SCOPE|VISB_JSON_FILE|CUSTOM_GRAPH_EDGES|CUSTOM_GRAPH_NODES
+            |SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|ANIMATION_FUNCTION_DEFAULT
             |HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*
             |ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b
           '''

@@ -117,7 +117,7 @@
   'keyword_operators':
     'patterns': [
         {
-          'match': '\\bnot\\b|¬|\\bor\\b|∨'
+          'match': '\\bnot\\b|¬|\\bor\\b|\\bbtrue\\b|\\bbfalse\\b|∨'
           'name': 'keyword.operator.logical.classicalb'
         }
         {
@@ -137,7 +137,7 @@
           'name': 'keyword.operator.tree.classicalb'
         }
         {
-          'match': '\\b(mod|succ|pred)\\b'
+          'match': '\\b(mod|succ|pred|ceiling|floor|real)\\b'
           'name': 'keyword.operator.numeric.classicalb'
         }
         {
@@ -157,7 +157,7 @@
           'name': 'keyword.operator.assignment.classicalb'
         }
         {
-          'match': '\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏'
+          'match': '\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter|CHOOSE)\\b|⋂|⋃|∑|∏'
           'name': 'keyword.operator.set.classicalb'
         }
         {
